@@ -1,5 +1,5 @@
-import { LegacyPageRenderer } from '@/components/LegacyPageRenderer';
+import { redirect } from 'next/navigation';
 
 export default function HomePage() {
-  return <LegacyPageRenderer source="marketplace-home.html" />;
+  redirect('/login');
 }

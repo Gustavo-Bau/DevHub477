@@ -28,7 +28,7 @@ Projeto organizado para publicação no GitHub e deploy direto na Vercel, usando
 
 ## Rotas disponíveis
 
-- `/` → marketplace-home
+- `/` → redireciona para `/login` (padrão: Login Pessoa Física)
 - `/login`
 - `/create-account`
 - `/create-account-comprehensive`
