@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6b26d9",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#171220",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<title>DEVHUB - Create Account</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 lg:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">hub</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-black leading-tight tracking-tight">DEVHUB</h2>
+</div>
+<div class="flex items-center gap-4">
+<span class="hidden sm:inline text-slate-500 dark:text-slate-400 text-sm">Already have an account?</span>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold leading-normal tracking-wide transition-all hover:bg-primary/90">
+                    Log In
+                </button>
+</div>
+</header>
+<!-- Main Content Section -->
+<main class="flex-1 flex items-center justify-center p-4 md:p-10">
+<div class="w-full max-w-[560px] bg-white dark:bg-slate-900 rounded-xl shadow-xl shadow-primary/5 border border-slate-200 dark:border-slate-800 overflow-hidden">
+<!-- Card Header -->
+<div class="p-8 pb-4 text-center">
+<h1 class="text-3xl font-black text-slate-900 dark:text-white mb-2">Create Account</h1>
+<p class="text-slate-500 dark:text-slate-400">Join the world's most innovative developer community</p>
+</div>
+<!-- User Type Selection -->
+<div class="px-8 py-4">
+<p class="text-sm font-bold text-slate-700 dark:text-slate-300 mb-4">I am joining as a...</p>
+<div class="grid grid-cols-3 gap-3">
+<!-- Company Option -->
+<button class="group flex flex-col items-center justify-center p-4 rounded-xl border-2 border-slate-100 dark:border-slate-800 hover:border-primary/50 transition-all bg-slate-50 dark:bg-slate-800/50">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-primary mb-2">corporate_fare</span>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-400 group-hover:text-primary uppercase tracking-wider">Company</span>
+</button>
+<!-- Regular User Option (Active) -->
+<button class="group flex flex-col items-center justify-center p-4 rounded-xl border-2 border-primary bg-primary/5 dark:bg-primary/10 transition-all">
+<span class="material-symbols-outlined text-primary mb-2">person</span>
+<span class="text-xs font-bold text-primary uppercase tracking-wider">Developer</span>
+</button>
+<!-- Supplier Option -->
+<button class="group flex flex-col items-center justify-center p-4 rounded-xl border-2 border-slate-100 dark:border-slate-800 hover:border-primary/50 transition-all bg-slate-50 dark:bg-slate-800/50">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-primary mb-2">local_shipping</span>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-400 group-hover:text-primary uppercase tracking-wider">Supplier</span>
+</button>
+</div>
+</div>
+<!-- Form Section -->
+<div class="px-8 pb-10 space-y-5">
+<!-- Full Name -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">badge</span>
+<input class="w-full pl-10 pr-4 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-slate-900 dark:text-white placeholder:text-slate-400" placeholder="e.g. Alex Rivera" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">mail</span>
+<input class="w-full pl-10 pr-4 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-slate-900 dark:text-white placeholder:text-slate-400" placeholder="alex@example.com" type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">lock</span>
+<input class="w-full pl-10 pr-12 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-slate-900 dark:text-white placeholder:text-slate-400" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</div>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-start gap-3 pt-2">
+<input class="mt-1 size-5 rounded border-slate-300 text-primary focus:ring-primary/20 transition-all cursor-pointer" id="terms" type="checkbox"/>
+<label class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed cursor-pointer" for="terms">
+                            I agree to the <a class="text-primary font-bold hover:underline" href="#">Terms of Service</a> and <a class="text-primary font-bold hover:underline" href="#">Privacy Policy</a>.
+                        </label>
+</div>
+<!-- Submit Button -->
+<button class="w-full py-4 bg-primary text-white font-black text-lg rounded-lg shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5 active:translate-y-0 transition-all">
+                        Create My Account
+                    </button>
+<!-- Divider -->
+<div class="relative flex items-center py-4">
+<div class="flex-grow border-t border-slate-200 dark:border-slate-800"></div>
+<span class="flex-shrink mx-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Or sign up with</span>
+<div class="flex-grow border-t border-slate-200 dark:border-slate-800"></div>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 px-4 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<img alt="" class="size-5" data-alt="Google logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANiBNSMoB3Uqv76yDHdpvTXRsmr-9Ty2zKiDmWB2NnhLh7ZgvOmFAGvfH6AWdseGB7Dxq5xls6hxASk9tVcIIKkbDBrTs25CUGIiyQ9UG333w2vtFD4pyiIulBn95X5Rao-QU7Huphcdo1TiRZLnB3wYvKSMdQjAbb9SI_pJrjHsMya6qdZyTpCS1u9Km0GaZHYlP8fQorUv07GzB8BSqNSB_nOdc-yKalhihYgmNkaxMo-e4c0AKYQ8Aoh8AWhBYVyghqu6Lkofto"/>
+<span class="text-sm font-bold text-slate-700 dark:text-slate-300">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<img alt="" class="size-5 dark:invert" data-alt="Github logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuzlf1bIWe18cuAxX4_OTfaCQ-Rqu0LJSLFbr2Q1VHbj7J700gOShHMuDKxzAd_3Lt85PnEAgeSPbVq5-kwMD8Y91SWqGx5wOnB-q1MPF8F6_G5alv1NGQy7a_KAFFJre4cFKZ0np45GGUud3fB-GeoNLx3Qh5WaH7Rz95XVh8I8zXWMWUwCURtM85kGu3huGv4_A76r-hA_cXDvxyWe0b6tUJP49z_NiuhuHT7h0YO0AdkEyern8p3YEwSCsUaSQUm_38XOiYJmF3"/>
+<span class="text-sm font-bold text-slate-700 dark:text-slate-300">GitHub</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="py-6 text-center">
+<p class="text-slate-400 dark:text-slate-600 text-sm">
+                © 2024 DEVHUB Inc. All rights reserved.
+            </p>
+</footer>
+</div>
+</div>
+</body></html>
