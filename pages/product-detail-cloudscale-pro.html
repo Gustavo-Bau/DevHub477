@@ -40,10 +40,10 @@
 <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">DEVHUB</h2>
 </div>
 <nav class="hidden md:flex items-center gap-9">
-<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Marketplace</a>
-<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Explore</a>
-<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Solutions</a>
-<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Pricing</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="/marketplace">Marketplace</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="/solutions">Explore</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="/solutions">Solutions</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="/pricing">Pricing</a>
 </nav>
 </div>
 <div class="flex flex-1 justify-end gap-4 items-center">
@@ -55,19 +55,19 @@
 <input class="w-full bg-transparent border-none focus:ring-0 text-sm px-2 text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="Search components..."/>
 </div>
 </label>
-<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all">
+<a href="/login" class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all">
 <span>Sign In</span>
-</button>
+</a>
 </div>
 </header>
 <main class="max-w-[1280px] mx-auto w-full px-6 lg:px-10 py-6">
 <!-- Breadcrumbs -->
 <div class="flex flex-wrap items-center gap-2 mb-6">
-<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary" href="#">Home</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary" href="/dashboard">Home</a>
 <span class="material-symbols-outlined text-slate-400 text-sm">chevron_right</span>
-<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary" href="#">Marketplace</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary" href="/marketplace">Marketplace</a>
 <span class="material-symbols-outlined text-slate-400 text-sm">chevron_right</span>
-<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary" href="#">SaaS &amp; Cloud</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary" href="/marketplace">SaaS &amp; Cloud</a>
 <span class="material-symbols-outlined text-slate-400 text-sm">chevron_right</span>
 <span class="text-slate-900 dark:text-slate-100 text-sm font-bold">CloudScale Pro</span>
 </div>
@@ -93,9 +93,9 @@
 </div>
 </div>
 <div class="flex gap-3 w-full md:w-auto">
-<button class="flex-1 md:flex-none flex items-center justify-center rounded-xl h-12 px-8 bg-primary text-white text-base font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
+<a href="/checkout" class="flex-1 md:flex-none flex items-center justify-center rounded-xl h-12 px-8 bg-primary text-white text-base font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
                         Try for Free
-                    </button>
+                    </a>
 <button class="flex items-center justify-center rounded-xl h-12 w-12 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
 <span class="material-symbols-outlined">bookmark</span>
 </button>
@@ -103,11 +103,11 @@
 </section>
 <!-- Tabs -->
 <nav class="flex border-b border-slate-200 dark:border-slate-800 mb-8 overflow-x-auto no-scrollbar">
-<a class="border-b-2 border-primary px-6 py-4 text-primary text-sm font-bold whitespace-nowrap" href="#">About</a>
-<a class="px-6 py-4 text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-900 dark:hover:text-slate-100 whitespace-nowrap" href="#">Features</a>
-<a class="px-6 py-4 text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-900 dark:hover:text-slate-100 whitespace-nowrap" href="#">Screenshots</a>
-<a class="px-6 py-4 text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-900 dark:hover:text-slate-100 whitespace-nowrap" href="#">Reviews</a>
-<a class="px-6 py-4 text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-900 dark:hover:text-slate-100 whitespace-nowrap" href="#">Changelog</a>
+<a class="border-b-2 border-primary px-6 py-4 text-primary text-sm font-bold whitespace-nowrap" href="#about">About</a>
+<a class="px-6 py-4 text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-900 dark:hover:text-slate-100 whitespace-nowrap" href="#features">Features</a>
+<a class="px-6 py-4 text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-900 dark:hover:text-slate-100 whitespace-nowrap" href="#features">Screenshots</a>
+<a class="px-6 py-4 text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-900 dark:hover:text-slate-100 whitespace-nowrap" href="#reviews">Reviews</a>
+<a class="px-6 py-4 text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-900 dark:hover:text-slate-100 whitespace-nowrap" href="#changelog">Changelog</a>
 </nav>
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
 <!-- Main Content -->
@@ -175,10 +175,10 @@
 </div>
 </section>
 <!-- Reviews -->
-<section>
+<section id="reviews">
 <div class="flex items-center justify-between mb-6">
 <h2 class="text-2xl font-bold">Reviews</h2>
-<button class="text-primary font-bold text-sm hover:underline">Write a review</button>
+<a href="/login" class="text-primary font-bold text-sm hover:underline">Write a review</a>
 </div>
 <div class="space-y-6">
 <div class="p-6 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
@@ -222,7 +222,7 @@
 <aside class="space-y-6">
 <!-- Pricing Card -->
 <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm sticky top-6">
-<h3 class="text-xl font-bold mb-4">Pricing Plans</h3>
+<h3 id="changelog" class="text-xl font-bold mb-4">Pricing Plans</h3>
 <div class="space-y-3">
 <div class="p-4 rounded-xl border-2 border-primary bg-primary/5 cursor-pointer">
 <div class="flex justify-between items-center mb-1">
@@ -246,7 +246,7 @@
 <p class="text-xs text-slate-500 dark:text-slate-400">Dedicated instance, 24/7 Support</p>
 </div>
 </div>
-<button class="w-full mt-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-colors">Select Plan</button>
+<a href="/checkout" class="w-full mt-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-colors inline-flex items-center justify-center">Select Plan</a>
 </div>
 <!-- Product Details -->
 <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
@@ -276,11 +276,11 @@
 <hr class="my-6 border-slate-200 dark:border-slate-800"/>
 <div class="space-y-4">
 <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Resources</h4>
-<a class="flex items-center gap-2 text-sm text-primary font-medium hover:underline" href="#">
+<a class="flex items-center gap-2 text-sm text-primary font-medium hover:underline" href="/solutions">
 <span class="material-symbols-outlined text-[18px]">description</span>
                                 Documentation
                             </a>
-<a class="flex items-center gap-2 text-sm text-primary font-medium hover:underline" href="#">
+<a class="flex items-center gap-2 text-sm text-primary font-medium hover:underline" href="/support">
 <span class="material-symbols-outlined text-[18px]">support_agent</span>
                                 Get Support
                             </a>
@@ -294,33 +294,33 @@
 <div>
 <h5 class="font-bold mb-4">Marketplace</h5>
 <ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
-<li><a class="hover:text-primary" href="#">Featured</a></li>
-<li><a class="hover:text-primary" href="#">New Arrivals</a></li>
-<li><a class="hover:text-primary" href="#">Best Sellers</a></li>
+<li><a class="hover:text-primary" href="/marketplace">Featured</a></li>
+<li><a class="hover:text-primary" href="/marketplace?page=2">New Arrivals</a></li>
+<li><a class="hover:text-primary" href="/marketplace?page=3">Best Sellers</a></li>
 </ul>
 </div>
 <div>
 <h5 class="font-bold mb-4">Support</h5>
 <ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
-<li><a class="hover:text-primary" href="#">Help Center</a></li>
-<li><a class="hover:text-primary" href="#">Community</a></li>
-<li><a class="hover:text-primary" href="#">Contact Us</a></li>
+<li><a class="hover:text-primary" href="/support">Help Center</a></li>
+<li><a class="hover:text-primary" href="/support">Community</a></li>
+<li><a class="hover:text-primary" href="/support">Contact Us</a></li>
 </ul>
 </div>
 <div>
 <h5 class="font-bold mb-4">Developers</h5>
 <ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
-<li><a class="hover:text-primary" href="#">API Docs</a></li>
-<li><a class="hover:text-primary" href="#">Sell your Software</a></li>
-<li><a class="hover:text-primary" href="#">Guidelines</a></li>
+<li><a class="hover:text-primary" href="/solutions">API Docs</a></li>
+<li><a class="hover:text-primary" href="/marketplace">Sell your Software</a></li>
+<li><a class="hover:text-primary" href="/terms">Guidelines</a></li>
 </ul>
 </div>
 <div>
 <h5 class="font-bold mb-4">Company</h5>
 <ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
-<li><a class="hover:text-primary" href="#">About Us</a></li>
-<li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
-<li><a class="hover:text-primary" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary" href="/solutions">About Us</a></li>
+<li><a class="hover:text-primary" href="/privacy">Privacy Policy</a></li>
+<li><a class="hover:text-primary" href="/terms">Terms of Service</a></li>
 </ul>
 </div>
 </div>
@@ -331,8 +331,8 @@
 </div>
 <p class="text-sm text-slate-400">© 2026 DEVHUB Inc. All rights reserved.</p>
 <div class="flex gap-4">
-<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined text-[20px]">public</span></a>
-<a class="text-slate-400 hover:text-primary" href="#"><span class="material-symbols-outlined text-[20px]">share</span></a>
+<a class="text-slate-400 hover:text-primary" href="/marketplace"><span class="material-symbols-outlined text-[20px]">public</span></a>
+<a class="text-slate-400 hover:text-primary" href="/marketplace"><span class="material-symbols-outlined text-[20px]">share</span></a>
 </div>
 </div>
 </footer>

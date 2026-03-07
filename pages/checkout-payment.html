@@ -43,22 +43,22 @@
 </div>
 <div class="flex flex-1 justify-end gap-6 items-center">
 <div class="hidden md:flex items-center gap-8">
-<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Marketplace</a>
-<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Solutions</a>
-<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Pricing</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="/marketplace">Marketplace</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="/solutions">Solutions</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="/pricing">Pricing</a>
 </div>
 <div class="flex gap-3">
-<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+<a href="/cart" class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
 <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
-</button>
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDt6GZBc3esXAskwsx2TKUauaNUAQe2j2U3k9zc4B7oMpOh-A--lys3rTpkykdEdbnFn4CK0cTa0LMTemANRL85D3nFPZXtup4tpFxYTQoSs8wcXgN4mUPfHkALzICAEv4R9AP5I1vL79zeM_divA_XgQMQFOCodvf0IxozbM8fhB36muZW8vxSs_fqwm6o2yDcYr9Ds-k1umu1fpi3Ajwad1xZttqSVGoMrvq8yL4HGe-Wa8rvvXuXjkhsfgfzEaaneJonTJ_4AOqf");'></div>
+</a>
+<a href="/settings/profile" class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDt6GZBc3esXAskwsx2TKUauaNUAQe2j2U3k9zc4B7oMpOh-A--lys3rTpkykdEdbnFn4CK0cTa0LMTemANRL85D3nFPZXtup4tpFxYTQoSs8wcXgN4mUPfHkALzICAEv4R9AP5I1vL79zeM_divA_XgQMQFOCodvf0IxozbM8fhB36muZW8vxSs_fqwm6o2yDcYr9Ds-k1umu1fpi3Ajwad1xZttqSVGoMrvq8yL4HGe-Wa8rvvXuXjkhsfgfzEaaneJonTJ_4AOqf");'></a>
 </div>
 </div>
 </header>
 <main class="flex-1 px-6 md:px-20 py-10 max-w-[1280px] mx-auto w-full">
 <!-- Breadcrumbs / Back Link -->
 <div class="mb-8">
-<a class="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors text-sm font-medium group" href="#">
+<a class="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors text-sm font-medium group" href="/marketplace">
 <span class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
                         Back to Marketplace
                     </a>
@@ -182,10 +182,10 @@
 </div>
 </div>
 <!-- Action Button -->
-<button class="w-full py-4 bg-primary text-white rounded-lg font-bold text-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 mb-6">
+<a href="/order-confirmation" class="w-full py-4 bg-primary text-white rounded-lg font-bold text-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 mb-6">
                                 Complete Purchase
                                 <span class="material-symbols-outlined">chevron_right</span>
-</button>
+</a>
 <!-- Coupon code -->
 <div class="flex gap-2">
 <input class="flex-1 h-10 text-sm rounded-lg border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 px-3 focus:ring-primary focus:border-primary" placeholder="Promo code" type="text"/>
@@ -193,8 +193,8 @@
 </div>
 <p class="mt-8 text-center text-xs text-slate-400 leading-relaxed">
                                 By clicking 'Complete Purchase', you agree to DEVHUB's 
-                                <a class="underline" href="#">Terms of Service</a> and 
-                                <a class="underline" href="#">Privacy Policy</a>.
+                                <a class="underline" href="/terms">Terms of Service</a> and 
+                                <a class="underline" href="/privacy">Privacy Policy</a>.
                             </p>
 </div>
 </div>

@@ -45,23 +45,23 @@
 </div>
 </div>
 <nav class="flex-1 px-4 py-4 space-y-1">
-<a class="flex items-center gap-3 px-3 py-2.5 bg-primary/10 text-primary rounded-lg font-semibold" href="#">
+<a class="flex items-center gap-3 px-3 py-2.5 bg-primary/10 text-primary rounded-lg font-semibold" href="/dashboard">
 <span class="material-symbols-outlined">dashboard</span>
 <span class="text-sm">Dashboard</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors" href="#">
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors" href="/subscriptions">
 <span class="material-symbols-outlined">package_2</span>
 <span class="text-sm">My Subscriptions</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors" href="#">
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors" href="/billing/invoices">
 <span class="material-symbols-outlined">credit_card</span>
 <span class="text-sm">Usage &amp; Billing</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors" href="#">
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors" href="/settings/profile">
 <span class="material-symbols-outlined">settings</span>
 <span class="text-sm">Settings</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors" href="#">
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors" href="/support">
 <span class="material-symbols-outlined">forum</span>
 <span class="text-sm">Support</span>
 </a>
@@ -87,14 +87,14 @@
 </div>
 </div>
 <div class="flex items-center gap-3">
-<button class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 transition-colors relative">
+<a href="/settings/notifications" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 transition-colors relative inline-flex">
 <span class="material-symbols-outlined">notifications</span>
 <span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full ring-2 ring-white dark:ring-slate-900"></span>
-</button>
-<button class="flex items-center gap-2 px-3 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">
+</a>
+<a href="/projects/new" class="flex items-center gap-2 px-3 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">
 <span class="material-symbols-outlined text-lg">add</span>
 <span>New Project</span>
-</button>
+</a>
 </div>
 </header>
 <div class="p-8 space-y-8 max-w-7xl mx-auto w-full">
@@ -143,7 +143,7 @@
 <div class="lg:col-span-2 space-y-6">
 <div class="flex items-center justify-between">
 <h3 class="text-xl font-bold">My Active Subscriptions</h3>
-<button class="text-primary text-sm font-semibold hover:underline">View All</button>
+<a class="text-primary text-sm font-semibold hover:underline" href="/subscriptions">View All</a>
 </div>
 <div class="space-y-4">
 <!-- Subscription Row 1 -->
@@ -162,7 +162,7 @@
 <p class="text-sm font-bold">$199/mo</p>
 <span class="inline-block px-2 py-0.5 bg-green-100 text-green-700 text-[10px] font-bold rounded-full uppercase">Active</span>
 </div>
-<button class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-bold hover:bg-primary hover:text-white transition-all">Manage</button>
+<button class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-bold hover:bg-primary hover:text-white transition-all" onclick="window.location.href='/subscriptions/cloudscale-pro'">Manage</button>
 </div>
 </div>
 <!-- Subscription Row 2 -->
@@ -181,7 +181,7 @@
 <p class="text-sm font-bold">$49/mo</p>
 <span class="inline-block px-2 py-0.5 bg-green-100 text-green-700 text-[10px] font-bold rounded-full uppercase">Active</span>
 </div>
-<button class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-bold hover:bg-primary hover:text-white transition-all">Manage</button>
+<button class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-bold hover:bg-primary hover:text-white transition-all" onclick="window.location.href='/subscriptions/devstack-pro-kit'">Manage</button>
 </div>
 </div>
 <!-- Subscription Row 3 -->
@@ -200,7 +200,7 @@
 <p class="text-sm font-bold">$89/mo</p>
 <span class="inline-block px-2 py-0.5 bg-green-100 text-green-700 text-[10px] font-bold rounded-full uppercase">Active</span>
 </div>
-<button class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-bold hover:bg-primary hover:text-white transition-all">Manage</button>
+<button class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-bold hover:bg-primary hover:text-white transition-all" onclick="window.location.href='/subscriptions/cloudguard-security'">Manage</button>
 </div>
 </div>
 </div>
@@ -223,7 +223,7 @@
 </div>
 <div class="flex items-center justify-between mt-4">
 <span class="text-xs font-bold text-primary">$15/mo</span>
-<button class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors">Try Trial</button>
+<button class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors" onclick="window.location.href='/product/refactorai-tool'">Try Trial</button>
 </div>
 </div>
 <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
@@ -238,11 +238,11 @@
 </div>
 <div class="flex items-center justify-between mt-4">
 <span class="text-xs font-bold text-primary">Free Tier</span>
-<button class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors">Add</button>
+<button class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-colors" onclick="window.location.href='/product/edgecache-cdn'">Add</button>
 </div>
 </div>
 <div class="pt-2">
-<a class="flex items-center justify-center gap-2 w-full py-3 border-2 border-dashed border-primary/30 rounded-xl text-primary font-bold text-sm hover:bg-primary/5 transition-colors" href="#">
+<a class="flex items-center justify-center gap-2 w-full py-3 border-2 border-dashed border-primary/30 rounded-xl text-primary font-bold text-sm hover:bg-primary/5 transition-colors" href="/marketplace">
 <span class="material-symbols-outlined text-sm">explore</span>
                                     Explore Marketplace
                                 </a>
