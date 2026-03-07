@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
 
 const apps = [
   ['GitHub', 'Connected', 'Manage repository access and deploy keys.'],
@@ -7,6 +10,8 @@ const apps = [
 ] as const;
 
 export default function SettingsConnectedAppsPage() {
+  const [activeApp, setActiveApp] = useState<string | null>(null);
+
   return (
     <main className="min-h-screen bg-background-light px-6 py-10">
       <section className="mx-auto max-w-5xl rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
@@ -22,9 +27,12 @@ export default function SettingsConnectedAppsPage() {
               </div>
               <div className="flex items-center gap-3">
                 <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary">{status}</span>
-                <Link href="/settings/connected-apps?configured=1" className="rounded-lg bg-primary px-3 py-2 text-xs font-bold text-white">
+                <button
+                  onClick={() => setActiveApp(name)}
+                  className="rounded-lg bg-primary px-3 py-2 text-xs font-bold text-white"
+                >
                   Configure
-                </Link>
+                </button>
               </div>
             </article>
           ))}
@@ -39,6 +47,23 @@ export default function SettingsConnectedAppsPage() {
           </Link>
         </div>
       </section>
+
+      {activeApp && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+          <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+            <h3 className="text-lg font-bold text-slate-900">Configure {activeApp}</h3>
+            <p className="mt-2 text-sm text-slate-600">Adjust permissions and integration scopes for this app.</p>
+            <div className="mt-5 flex justify-end gap-3">
+              <button onClick={() => setActiveApp(null)} className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold">
+                Cancel
+              </button>
+              <button onClick={() => setActiveApp(null)} className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white">
+                Save configuration
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

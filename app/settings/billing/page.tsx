@@ -1,6 +1,11 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function SettingsBillingPage() {
+  const [saved, setSaved] = useState(false);
+
   return (
     <main className="min-h-screen bg-background-light px-6 py-10">
       <section className="mx-auto max-w-5xl rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
@@ -33,9 +38,15 @@ export default function SettingsBillingPage() {
         </div>
 
         <div className="mt-8 flex flex-wrap gap-3">
-          <Link href="/settings/billing?saved=1" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white">
+          <button
+            onClick={() => {
+              setSaved(true);
+              setTimeout(() => setSaved(false), 2200);
+            }}
+            className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white"
+          >
             Save billing changes
-          </Link>
+          </button>
           <Link href="/settings/connected-apps" className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700">
             Connected apps
           </Link>
@@ -44,6 +55,12 @@ export default function SettingsBillingPage() {
           </Link>
         </div>
       </section>
+
+      {saved && (
+        <div className="fixed bottom-6 right-6 rounded-lg bg-emerald-600 px-4 py-3 text-sm font-semibold text-white shadow-lg">
+          Billing settings saved successfully.
+        </div>
+      )}
     </main>
   );
 }
