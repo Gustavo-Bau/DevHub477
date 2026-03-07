@@ -71,19 +71,19 @@
 <p class="text-slate-500 text-sm" style="">Manage your workspace</p>
 </div>
 <nav class="flex flex-col gap-1">
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-semibold shadow-sm shadow-primary/20" href="#" style="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-semibold shadow-sm shadow-primary/20" href="/settings/profile" style="">
 <span class="material-symbols-outlined text-[22px]" style="">person</span>
 <span class="text-sm" style="">Personal Info</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors" href="#" style="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors" href="/settings/security" style="">
 <span class="material-symbols-outlined text-[22px]" style="">lock</span>
 <span class="text-sm" style="">Security &amp; Password</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors" href="#" style="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors" href="/settings/billing" style="">
 <span class="material-symbols-outlined text-[22px]" style="">business_center</span>
-<span class="text-sm" style="">Account Type</span>
+<span class="text-sm" style="">Billing &amp; Payments</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors" href="#" style="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors" href="/settings/notifications" style="">
 <span class="material-symbols-outlined text-[22px]" style="">notifications</span>
 <span class="text-sm" style="">Notification Preferences</span>
 </a>
@@ -161,8 +161,8 @@
 </div>
 <!-- Actions Footer -->
 <div class="p-6 md:p-8 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-800 flex items-center justify-end gap-4">
-<a class="text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors" href="#" style="">Cancel</a>
-<button class="px-8 py-2.5 bg-primary text-white font-bold rounded-lg shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all active:scale-95" style="">
+<a class="text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors" href="/dashboard" style="">Cancel</a>
+<button onclick="showProfileToast()" class="px-8 py-2.5 bg-primary text-white font-bold rounded-lg shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all active:scale-95" style="">
                             Save Changes
                         </button>
 </div>
@@ -179,6 +179,8 @@
 </div>
 </section>
 </main>
+<div id="profile-save-toast" class="fixed bottom-6 right-6 hidden rounded-lg bg-emerald-600 text-white px-4 py-3 text-sm font-semibold shadow-lg z-50">Profile updated successfully.</div>
+<script>function showProfileToast(){const el=document.getElementById('profile-save-toast');if(!el)return;el.classList.remove('hidden');setTimeout(()=>el.classList.add('hidden'),2200);}</script>
 <footer class="p-10 text-center text-slate-400 dark:text-slate-600 text-sm">
 <p class="" style="">© 2026 DEVHUB Ecosystem. All rights reserved.</p>
 </footer>

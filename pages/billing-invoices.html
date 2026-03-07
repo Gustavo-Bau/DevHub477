@@ -53,23 +53,23 @@
 </div>
 </div>
 <nav class="flex flex-col gap-1">
-<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="/dashboard">
 <span class="material-symbols-outlined text-[22px]">dashboard</span>
 <span class="text-sm font-medium">Dashboard</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="/projects/new">
 <span class="material-symbols-outlined text-[22px]">work</span>
 <span class="text-sm font-medium">Projects</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="/marketplace">
 <span class="material-symbols-outlined text-[22px]">storefront</span>
 <span class="text-sm font-medium">Marketplace</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg transition-colors" href="#">
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg transition-colors" href="/settings/billing">
 <span class="material-symbols-outlined text-[22px] fill-1">payments</span>
 <span class="text-sm font-semibold">Billing</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="/settings/profile">
 <span class="material-symbols-outlined text-[22px]">settings</span>
 <span class="text-sm font-medium">Settings</span>
 </a>
@@ -195,10 +195,10 @@
 <section>
 <div class="flex items-center justify-between mb-4">
 <h3 class="text-lg font-bold text-slate-900 dark:text-white">Billing History</h3>
-<button class="text-primary text-sm font-bold flex items-center gap-1 hover:underline">
+<a download="devhub-invoices-export.csv" href="data:text/csv,invoice_id,date,amount,status%0AINV-9402,2023-09-01,49.00,Paid%0AINV-8812,2023-08-01,49.00,Paid" class="text-primary text-sm font-bold flex items-center gap-1 hover:underline">
 <span>Export All</span>
 <span class="material-symbols-outlined text-sm">download</span>
-</button>
+</a>
 </div>
 <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
 <div class="overflow-x-auto">
@@ -225,7 +225,7 @@
                                             </span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-right">
-<button class="text-slate-400 hover:text-primary transition-colors">
+<button onclick="openInvoiceModal(this)" data-invoice="#INV-9402" data-date="Sep 01, 2023" data-amount="$49.00" class="text-slate-400 hover:text-primary transition-colors">
 <span class="material-symbols-outlined">receipt_long</span>
 </button>
 </td>
@@ -242,7 +242,7 @@
                                             </span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-right">
-<button class="text-slate-400 hover:text-primary transition-colors">
+<button onclick="openInvoiceModal(this)" data-invoice="#INV-8812" data-date="Aug 01, 2023" data-amount="$49.00" class="text-slate-400 hover:text-primary transition-colors">
 <span class="material-symbols-outlined">receipt_long</span>
 </button>
 </td>
@@ -259,7 +259,7 @@
                                             </span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-right">
-<button class="text-slate-400 hover:text-primary transition-colors">
+<button onclick="openInvoiceModal(this)" data-invoice="#INV-7734" data-date="Jul 01, 2023" data-amount="$124.50" class="text-slate-400 hover:text-primary transition-colors">
 <span class="material-symbols-outlined">receipt_long</span>
 </button>
 </td>
@@ -276,7 +276,7 @@
                                             </span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-right">
-<button class="text-slate-400 hover:text-primary transition-colors">
+<button onclick="openInvoiceModal(this)" data-invoice="#INV-6211" data-date="Jun 01, 2023" data-amount="$49.00" class="text-slate-400 hover:text-primary transition-colors">
 <span class="material-symbols-outlined">receipt_long</span>
 </button>
 </td>
@@ -302,5 +302,37 @@
 </section>
 </div>
 </main>
+<div id="invoice-modal" class="fixed inset-0 hidden items-center justify-center bg-black/50 z-50 p-4">
+  <div class="w-full max-w-md rounded-xl bg-white dark:bg-slate-900 p-6 border border-slate-200 dark:border-slate-700">
+    <h3 class="text-lg font-bold mb-4">Invoice Details</h3>
+    <p class="text-sm text-slate-600 mb-2">Invoice: <span id="inv-id" class="font-semibold text-slate-900 dark:text-white"></span></p>
+    <p class="text-sm text-slate-600 mb-2">Date: <span id="inv-date" class="font-semibold text-slate-900 dark:text-white"></span></p>
+    <p class="text-sm text-slate-600 mb-6">Amount: <span id="inv-amount" class="font-semibold text-slate-900 dark:text-white"></span></p>
+    <div class="flex gap-3 justify-end">
+      <a id="inv-download" download="invoice.txt" href="data:text/plain,Select%20an%20invoice%20to%20download" class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white">Download</a>
+      <button onclick="closeInvoiceModal()" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold">Close</button>
+    </div>
+  </div>
+</div>
+<script>
+function openInvoiceModal(btn){
+  const id=btn.getAttribute('data-invoice')||'';
+  const date=btn.getAttribute('data-date')||'';
+  const amount=btn.getAttribute('data-amount')||'';
+  document.getElementById('inv-id').textContent=id;
+  document.getElementById('inv-date').textContent=date;
+  document.getElementById('inv-amount').textContent=amount;
+  const txt=`DEVHUB Invoice ${id}\nDate: ${date}\nAmount: ${amount}`;
+  document.getElementById('inv-download').setAttribute('href',`data:text/plain,${encodeURIComponent(txt)}`);
+  const modal=document.getElementById('invoice-modal');
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+function closeInvoiceModal(){
+  const modal=document.getElementById('invoice-modal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+}
+</script>
 </div>
 </body></html>
