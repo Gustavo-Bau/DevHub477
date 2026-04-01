@@ -21,7 +21,7 @@ export default function CheckoutSuccessPage() {
   const [reviewMessage, setReviewMessage] = useState<string | null>(null);
 
   useEffect(() => {
-    const sessionId = searchParams.get('session_id');
+    const sessionId = searchParams?.get('session_id');
     if (!sessionId) {
       setStatus('Missing payment session id.');
       return;
