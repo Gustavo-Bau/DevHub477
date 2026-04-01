@@ -1,3 +1,4 @@
+import Stripe from 'stripe';
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 
@@ -26,7 +27,7 @@ export async function POST(request: Request) {
 
     const session = await getServerSession(authOptions);
 
-    const lineItems = items.map((item) => ({
+    const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = items.map((item) => ({
       quantity: item.quantity,
       price_data: {
         currency: 'usd',
@@ -45,7 +46,10 @@ export async function POST(request: Request) {
       price_data: {
         currency: 'usd',
         unit_amount: Math.round(taxAmount * 100),
-        product_data: { name: 'Sales Tax' },
+        product_data: {
+          name: 'Sales Tax',
+          metadata: { itemId: 'tax', itemType: 'product' },
+        },
       },
     });
 
