@@ -2,7 +2,9 @@
  * Fonte local de dados (mock).
  * Futuramente, esta lista pode vir de uma API sem alterar o restante da UI.
  */
-window.MOCK_PRODUCTS = [
+const root = typeof window !== 'undefined' ? window : globalThis;
+
+root.MOCK_PRODUCTS = [
   {
     id: 'crm-pro',
     nome: 'CRM Pro',
