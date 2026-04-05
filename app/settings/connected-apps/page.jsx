@@ -7,10 +7,10 @@ const apps = [
   ['GitHub', 'Connected', 'Manage repository access and deploy keys.'],
   ['Slack', 'Connected', 'Receive alerts for billing and subscription events.'],
   ['Jira', 'Not connected', 'Sync roadmap tasks with marketplace projects.']
-] as const;
+];
 
 export default function SettingsConnectedAppsPage() {
-  const [activeApp, setActiveApp] = useState<string | null>(null);
+  const [activeApp, setActiveApp] = useState(null);
 
   return (
     <main className="min-h-screen bg-background-light px-6 py-10">

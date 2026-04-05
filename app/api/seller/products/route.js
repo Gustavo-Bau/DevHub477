@@ -4,7 +4,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth-options';
 import { prisma } from '@/lib/prisma';
 
-function parseStringArray(value: unknown) {
+function parseStringArray(value) {
   if (!Array.isArray(value)) return [];
   return value.map((entry) => String(entry).trim()).filter(Boolean);
 }
@@ -24,7 +24,7 @@ export async function GET() {
   return NextResponse.json({ products });
 }
 
-export async function POST(request: Request) {
+export async function POST(request) {
   const session = await getServerSession(authOptions);
 
   if (!session?.user || !['seller', 'freelancer'].includes(session.user.role)) {
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
     }
 
     const parsedPrice = Number(price);
-    if (Number.isNaN(parsedPrice) || parsedPrice <= 0) {
+    if (!Number.isFinite(parsedPrice) || parsedPrice <= 0) {
       return NextResponse.json({ error: 'Price must be a number greater than 0.' }, { status: 400 });
     }
 

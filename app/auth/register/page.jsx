@@ -1,10 +1,10 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
-const roles = ['buyer', 'seller', 'freelancer'] as const;
+const roles = ['buyer', 'seller', 'freelancer'];
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -13,11 +13,11 @@ export default function RegisterPage() {
   const [password, setPassword] = useState('');
   const [bio, setBio] = useState('');
   const [skills, setSkills] = useState('');
-  const [role, setRole] = useState<(typeof roles)[number]>('buyer');
-  const [error, setError] = useState<string | null>(null);
+  const [role, setRole] = useState('buyer');
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
     setError(null);
@@ -75,7 +75,7 @@ export default function RegisterPage() {
         />
 
         <label htmlFor="role">Role</label>
-        <select id="role" value={role} onChange={(e) => setRole(e.target.value as (typeof roles)[number])}>
+        <select id="role" value={role} onChange={(e) => setRole(e.target.value)}>
           {roles.map((option) => (
             <option key={option} value={option}>
               {option}

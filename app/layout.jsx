@@ -1,13 +1,12 @@
-import type { Metadata } from 'next';
 import './globals.css';
 import { Providers } from '@/app/providers';
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'DevHub Web',
-  description: 'Projeto web organizado com rotas baseadas nas telas HTML originais.'
+  description: 'Projeto web organizado com rotas baseadas nas telas HTML originais.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
       <head>
@@ -27,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#6b26d9','background-light':'#f7f6f8','background-dark':'#171220'},fontFamily:{display:['Inter','sans-serif']},borderRadius:{DEFAULT:'0.25rem',lg:'0.5rem',xl:'0.75rem',full:'9999px'}}}}"
+              "tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#6b26d9','background-light':'#f7f6f8','background-dark':'#171220'},fontFamily:{display:['Inter','sans-serif']},borderRadius:{DEFAULT:'0.25rem',lg:'0.5rem',xl:'0.75rem',full:'9999px'}}}}",
           }}
         />
       </head>

@@ -50,9 +50,9 @@ const products = {
     price: 'Free Tier',
     description: 'CDN global para entrega de assets com baixa latência e cache inteligente.'
   }
-} as const;
+};
 
-export default function ProductDetailPage({ params }: { params: { slug: keyof typeof products } }) {
+export default function ProductDetailPage({ params }) {
   const product = products[params.slug];
 
   if (!product) notFound();

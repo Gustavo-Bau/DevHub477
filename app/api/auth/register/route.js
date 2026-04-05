@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 
 import { prisma } from '@/lib/prisma';
 
-export async function POST(request: Request) {
+export async function POST(request) {
   try {
     const { name, email, password, role, bio, skills } = await request.json();
 
@@ -16,23 +16,21 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Invalid role selected.' }, { status: 400 });
     }
 
-    const existing = await prisma.user.findUnique({ where: { email: email.toLowerCase() } });
+    const existing = await prisma.user.findUnique({ where: { email: String(email).toLowerCase() } });
     if (existing) {
       return NextResponse.json({ error: 'Email is already registered.' }, { status: 409 });
     }
 
-    const passwordHash = await hash(password, 12);
+    const passwordHash = await hash(String(password), 12);
 
     const user = await prisma.user.create({
       data: {
         name: name?.trim() || null,
-        email: email.toLowerCase(),
+        email: String(email).toLowerCase(),
         passwordHash,
         role,
         bio: bio?.trim() || null,
-        skills: Array.isArray(skills)
-          ? skills.map((skill: string) => skill.trim()).filter(Boolean)
-          : [],
+        skills: Array.isArray(skills) ? skills.map((skill) => String(skill).trim()).filter(Boolean) : [],
         rating: null,
       },
       select: { id: true, email: true, role: true },
