@@ -10,7 +10,8 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "postinstall": "prisma generate",
-    "check:no-ts": "bash -lc \"if rg --files -g '*.ts' -g '*.tsx' -g '*.d.ts' app components contexts lib pages | grep -q .; then echo 'TypeScript files found'; exit 1; else echo 'No TypeScript files found'; fi\""
+    "check:no-ts": "bash -lc \"if rg --files -g '*.ts' -g '*.tsx' -g '*.d.ts' app components contexts lib pages | grep -q .; then echo 'TypeScript files found'; exit 1; else echo 'No TypeScript files found'; fi\"",
+    "prebuild": "node scripts/prebuild-cleanup.js"
   },
   "dependencies": {
     "next": "14.2.5",
