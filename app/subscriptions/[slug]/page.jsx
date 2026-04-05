@@ -20,9 +20,9 @@ const subscriptions = {
     renew: 'Renews Oct 28',
     amount: '$89/mo'
   }
-} as const;
+};
 
-export default function SubscriptionDetailPage({ params }: { params: { slug: keyof typeof subscriptions } }) {
+export default function SubscriptionDetailPage({ params }) {
   const subscription = subscriptions[params.slug];
 
   if (!subscription) notFound();

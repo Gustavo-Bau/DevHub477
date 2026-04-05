@@ -4,7 +4,7 @@ import { ProductForm } from '@/components/seller/ProductForm';
 import { requireSellerSession } from '@/lib/auth-guards';
 import { prisma } from '@/lib/prisma';
 
-export default async function EditProductPage({ params }: { params: { id: string } }) {
+export default async function EditProductPage({ params }) {
   const session = await requireSellerSession(`/seller/products/${params.id}/edit`);
 
   const product = await prisma.product.findFirst({

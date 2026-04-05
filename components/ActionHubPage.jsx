@@ -1,16 +1,6 @@
 import Link from 'next/link';
 
-type ActionLink = { href: string; label: string };
-
-export function ActionHubPage({
-  title,
-  description,
-  links
-}: {
-  title: string;
-  description: string;
-  links: ActionLink[];
-}) {
+export function ActionHubPage({ title, description, links }) {
   return (
     <main className="min-h-screen bg-background-light px-6 py-10 text-slate-900">
       <section className="mx-auto max-w-5xl rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">

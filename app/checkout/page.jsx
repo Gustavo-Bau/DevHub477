@@ -8,9 +8,9 @@ const TAX_RATE = 0.08;
 
 export default function CheckoutPage() {
   const { items, subtotal } = useCart();
-  const [paymentMethod, setPaymentMethod] = useState<'card' | 'bank_transfer'>('card');
+  const [paymentMethod, setPaymentMethod] = useState('card');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
   const tax = subtotal * TAX_RATE;
   const total = subtotal + tax;
@@ -30,7 +30,7 @@ export default function CheckoutPage() {
         throw new Error(data.error ?? 'Unable to create checkout session.');
       }
 
-      window.location.href = data.url as string;
+      window.location.href = data.url;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Payment initialization failed.');
       setLoading(false);

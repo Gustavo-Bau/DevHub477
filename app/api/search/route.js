@@ -1,11 +1,10 @@
 import { NextResponse } from 'next/server';
-import { Prisma } from '@prisma/client';
 
 import { prisma } from '@/lib/prisma';
 
 const PAGE_SIZE = 12;
 
-export async function GET(request: Request) {
+export async function GET(request) {
   const { searchParams } = new URL(request.url);
 
   const q = searchParams.get('q')?.trim();
@@ -18,18 +17,14 @@ export async function GET(request: Request) {
   const sort = searchParams.get('sort') ?? 'popularity';
   const page = Math.max(1, Number(searchParams.get('page') ?? '1'));
 
-  const where: Prisma.ProductWhereInput = {
+  const where = {
     AND: [
-      q
-        ? {
-            OR: [
-              { title: { contains: q, mode: 'insensitive' } },
-              { description: { contains: q, mode: 'insensitive' } },
-              { features: { hasSome: [q] } },
-              { technologyStack: { hasSome: [q] } },
-            ],
-          }
-        : {},
+      q ? { OR: [
+        { title: { contains: q, mode: 'insensitive' } },
+        { description: { contains: q, mode: 'insensitive' } },
+        { features: { hasSome: [q] } },
+        { technologyStack: { hasSome: [q] } },
+      ] } : {},
       category ? { category: { equals: category, mode: 'insensitive' } } : {},
       minPrice > 0 ? { price: { gte: minPrice } } : {},
       maxPrice > 0 ? { price: { lte: maxPrice } } : {},
@@ -39,12 +34,7 @@ export async function GET(request: Request) {
     ],
   };
 
-  const orderBy: Prisma.ProductOrderByWithRelationInput =
-    sort === 'price'
-      ? { price: 'asc' }
-      : sort === 'rating'
-        ? { ratings: 'desc' }
-        : { popularity: 'desc' };
+  const orderBy = sort === 'price' ? { price: 'asc' } : sort === 'rating' ? { ratings: 'desc' } : { popularity: 'desc' };
 
   const [items, total] = await Promise.all([
     prisma.product.findMany({
@@ -52,26 +42,10 @@ export async function GET(request: Request) {
       orderBy,
       skip: (page - 1) * PAGE_SIZE,
       take: PAGE_SIZE,
-      include: {
-        owner: {
-          select: {
-            id: true,
-            name: true,
-            role: true,
-            rating: true,
-            skills: true,
-          },
-        },
-      },
+      include: { owner: { select: { id: true, name: true, role: true, rating: true, skills: true } } },
     }),
     prisma.product.count({ where }),
   ]);
 
-  return NextResponse.json({
-    items,
-    total,
-    page,
-    pageSize: PAGE_SIZE,
-    hasMore: page * PAGE_SIZE < total,
-  });
+  return NextResponse.json({ items, total, page, pageSize: PAGE_SIZE, hasMore: page * PAGE_SIZE < total });
 }

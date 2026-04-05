@@ -21,7 +21,7 @@ const routes = [
   ['/settings/security', 'Segurança'],
   ['/settings/notifications', 'Notificações'],
   ['/subscriptions/cloudscale-pro', 'Assinatura']
-] as const;
+];
 
 export function GlobalRouteBar() {
   return (
