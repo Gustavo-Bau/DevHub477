@@ -4,7 +4,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth-options';
 import { prisma } from '@/lib/prisma';
 
-function parseStringArray(value: unknown) {
+function parseStringArray(value) {
   if (!Array.isArray(value)) return [];
   return value.map((entry) => String(entry).trim()).filter(Boolean);
 }
@@ -15,7 +15,7 @@ async function getAuthorizedSellerOrFreelancer() {
   return session;
 }
 
-export async function GET(_request: Request, context: { params: { id: string } }) {
+export async function GET(_request, context) {
   const session = await getAuthorizedSellerOrFreelancer();
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
@@ -28,7 +28,7 @@ export async function GET(_request: Request, context: { params: { id: string } }
   return NextResponse.json({ product });
 }
 
-export async function PATCH(request: Request, context: { params: { id: string } }) {
+export async function PATCH(request, context) {
   const session = await getAuthorizedSellerOrFreelancer();
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 

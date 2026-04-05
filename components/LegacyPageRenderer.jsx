@@ -1,10 +1,6 @@
 import { loadLegacyHtml } from '@/lib/html-loader';
 
-type LegacyPageRendererProps = {
-  source: string;
-};
-
-export async function LegacyPageRenderer({ source }: LegacyPageRendererProps) {
+export async function LegacyPageRenderer({ source }) {
   const { bodyClass, bodyHtml } = await loadLegacyHtml(source);
 
   return (

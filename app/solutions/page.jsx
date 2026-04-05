@@ -16,7 +16,7 @@ const solutionGroups = [
     text: 'Single sign-on, audit trails and enterprise connectors for large organizations.',
     cta: '/pricing'
   }
-] as const;
+];
 
 export default function SolutionsPage() {
   return (

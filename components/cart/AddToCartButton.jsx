@@ -4,21 +4,9 @@ import { useState } from 'react';
 
 import { useCart } from '@/contexts/CartContext';
 
-type AddToCartButtonProps = {
-  item: {
-    id: string;
-    title: string;
-    description?: string;
-    price: number;
-    image?: string;
-    category?: string;
-    type: 'product' | 'service';
-  };
-};
-
-export function AddToCartButton({ item }: AddToCartButtonProps) {
+export function AddToCartButton({ item }) {
   const { addItem } = useCart();
-  const [message, setMessage] = useState<string | null>(null);
+  const [message, setMessage] = useState(null);
 
   return (
     <div>

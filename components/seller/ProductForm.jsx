@@ -4,32 +4,7 @@ import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
-type ProductFormValues = {
-  title: string;
-  description: string;
-  category: string;
-  price: number;
-  featuresInput: string;
-  stackInput: string;
-  freelancerAvailable: boolean;
-};
-
-type ProductFormProps = {
-  mode: 'create' | 'edit';
-  productId?: string;
-  defaultValues?: {
-    title: string;
-    description: string;
-    category: string;
-    price: number;
-    features: string[];
-    images: string[];
-    technologyStack: string[];
-    freelancerAvailable: boolean;
-  };
-};
-
-async function uploadToCloudinary(file: File) {
+async function uploadToCloudinary(file) {
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
   const preset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
 
@@ -51,17 +26,21 @@ async function uploadToCloudinary(file: File) {
   }
 
   const json = await response.json();
-  return json.secure_url as string;
+  return json.secure_url;
 }
 
-export function ProductForm({ mode, productId, defaultValues }: ProductFormProps) {
+export function ProductForm({ mode, productId, defaultValues }) {
   const router = useRouter();
-  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
-  const [existingImages, setExistingImages] = useState<string[]>(defaultValues?.images ?? []);
-  const [notification, setNotification] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [existingImages, setExistingImages] = useState(defaultValues?.images ?? []);
+  const [notification, setNotification] = useState(null);
   const [submitting, setSubmitting] = useState(false);
 
-  const { register, handleSubmit, formState: { errors } } = useForm<ProductFormValues>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       title: defaultValues?.title ?? '',
       description: defaultValues?.description ?? '',
@@ -75,7 +54,7 @@ export function ProductForm({ mode, productId, defaultValues }: ProductFormProps
 
   const submitLabel = useMemo(() => (mode === 'create' ? 'Create product' : 'Update product'), [mode]);
 
-  const onSubmit = async (values: ProductFormValues) => {
+  const onSubmit = async (values) => {
     setSubmitting(true);
     setNotification(null);
 
@@ -127,69 +106,19 @@ export function ProductForm({ mode, productId, defaultValues }: ProductFormProps
       {notification ? (
         <p style={{ color: notification.type === 'error' ? '#b91c1c' : '#15803d' }}>{notification.message}</p>
       ) : null}
-
-      <label>
-        Title
-        <input {...register('title', { required: 'Title is required', minLength: { value: 3, message: 'Minimum 3 characters' } })} />
-      </label>
+      <label>Title<input {...register('title', { required: 'Title is required', minLength: { value: 3, message: 'Minimum 3 characters' } })} /></label>
       {errors.title ? <p style={{ color: '#b91c1c' }}>{errors.title.message}</p> : null}
-
-      <label>
-        Description
-        <textarea
-          {...register('description', { required: 'Description is required', minLength: { value: 20, message: 'Minimum 20 characters' } })}
-        />
-      </label>
+      <label>Description<textarea {...register('description', { required: 'Description is required', minLength: { value: 20, message: 'Minimum 20 characters' } })} /></label>
       {errors.description ? <p style={{ color: '#b91c1c' }}>{errors.description.message}</p> : null}
-
-      <label>
-        Category
-        <input {...register('category', { required: 'Category is required' })} />
-      </label>
+      <label>Category<input {...register('category', { required: 'Category is required' })} /></label>
       {errors.category ? <p style={{ color: '#b91c1c' }}>{errors.category.message}</p> : null}
-
-      <label>
-        Price (USD)
-        <input type="number" step="0.01" {...register('price', { required: true, min: { value: 1, message: 'Price must be greater than 0' } })} />
-      </label>
+      <label>Price (USD)<input type="number" step="0.01" {...register('price', { required: true, min: { value: 1, message: 'Price must be greater than 0' } })} /></label>
       {errors.price ? <p style={{ color: '#b91c1c' }}>{errors.price.message}</p> : null}
-
-      <label>
-        Features (comma separated)
-        <input {...register('featuresInput')} />
-      </label>
-
-      <label>
-        Technology stack (comma separated)
-        <input {...register('stackInput')} />
-      </label>
-
-      <label style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-        <input type="checkbox" {...register('freelancerAvailable')} />
-        Freelancer available for service delivery
-      </label>
-
-      {existingImages.length ? (
-        <div>
-          <p>Existing images:</p>
-          <ul>
-            {existingImages.map((image) => (
-              <li key={image}>
-                <a href={image} target="_blank" rel="noreferrer">{image}</a>{' '}
-                <button type="button" onClick={() => setExistingImages((current) => current.filter((entry) => entry !== image))}>
-                  Remove
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
-
-      <label>
-        Upload images
-        <input type="file" accept="image/*" multiple onChange={(event) => setSelectedFiles(Array.from(event.target.files ?? []))} />
-      </label>
-
+      <label>Features (comma separated)<input {...register('featuresInput')} /></label>
+      <label>Technology stack (comma separated)<input {...register('stackInput')} /></label>
+      <label style={{ display: 'flex', gap: 8, alignItems: 'center' }}><input type="checkbox" {...register('freelancerAvailable')} />Freelancer available for service delivery</label>
+      {existingImages.length ? <div><p>Existing images:</p><ul>{existingImages.map((image) => <li key={image}><a href={image} target="_blank" rel="noreferrer">{image}</a> <button type="button" onClick={() => setExistingImages((current) => current.filter((entry) => entry !== image))}>Remove</button></li>)}</ul></div> : null}
+      <label>Upload images<input type="file" accept="image/*" multiple onChange={(event) => setSelectedFiles(Array.from(event.target.files ?? []))} /></label>
       <button type="submit" disabled={submitting}>{submitting ? 'Saving...' : submitLabel}</button>
     </form>
   );
