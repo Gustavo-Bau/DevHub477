@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import { prisma } from '@/lib/prisma';
-import { stripe } from '@/lib/stripe';
+import { getStripe } from '@/lib/stripe';
 
 async function sendConfirmationEmail(email, orderId, total) {
   const apiKey = process.env.RESEND_API_KEY;
@@ -35,6 +35,7 @@ export async function POST(request) {
       return NextResponse.json({ orderId: existing.id, alreadyProcessed: true });
     }
 
+    const stripe = getStripe();
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     if (session.payment_status !== 'paid') {

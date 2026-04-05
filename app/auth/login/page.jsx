@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl') ?? '/dashboard';
@@ -61,5 +61,13 @@ export default function LoginPage() {
         No account? <a href="/auth/register">Register</a>
       </p>
     </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<main style={{ maxWidth: 500, margin: '3rem auto' }}><p>Loading login...</p></main>}>
+      <LoginForm />
+    </Suspense>
   );
 }

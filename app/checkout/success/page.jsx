@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 import { useCart } from '@/contexts/CartContext';
 
-export default function CheckoutSuccessPage() {
+function CheckoutSuccessContent() {
   const searchParams = useSearchParams();
   const { clearCart } = useCart();
   const [status, setStatus] = useState('Finalizing your order...');
@@ -41,5 +41,13 @@ export default function CheckoutSuccessPage() {
       <h1>Checkout Success</h1>
       <p>{status}</p>
     </main>
+  );
+}
+
+export default function CheckoutSuccessPage() {
+  return (
+    <Suspense fallback={<main style={{ maxWidth: 700, margin: '2rem auto' }}><p>Loading checkout status...</p></main>}>
+      <CheckoutSuccessContent />
+    </Suspense>
   );
 }
