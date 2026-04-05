@@ -23,7 +23,9 @@
     "stripe": "^18.2.0"
   },
   "devDependencies": {
-    "prisma": "^6.5.0"
+    "prisma": "^6.5.0",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.2.5"
   },
   "engines": {
     "node": "20.x"
