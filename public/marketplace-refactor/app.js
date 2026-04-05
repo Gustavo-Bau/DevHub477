@@ -1,23 +1,17 @@
 /**
- * Estado central da aplicação.
- * Mantém filtros ativos, produtos e carrinho.
+ * Estado da aplicação.
  */
 const state = {
-  products: window.MARKETPLACE_PRODUCTS ?? [],
+  products: [],
+  cart: {},
   filters: {
     query: '',
-    category: 'all',
     maxPrice: 500,
   },
-  cart: {},
 };
 
-/**
- * Cache de elementos do DOM para evitar buscas repetidas e melhorar legibilidade.
- */
 const elements = {
   searchInput: document.querySelector('#searchInput'),
-  categorySelect: document.querySelector('#categorySelect'),
   priceInput: document.querySelector('#priceInput'),
   priceLabel: document.querySelector('#priceLabel'),
   clearFiltersBtn: document.querySelector('#clearFiltersBtn'),
@@ -30,33 +24,38 @@ const elements = {
   themeToggle: document.querySelector('#themeToggle'),
 };
 
-/**
- * Funções utilitárias reutilizáveis.
- */
 const formatCurrency = (value) => `$${Number(value).toFixed(2)}`;
 
-const getFilteredProducts = () => {
+/**
+ * Camada de acesso a dados (preparada para API).
+ * Hoje retorna mock local; amanhã pode trocar para fetch('/api/products').
+ */
+async function loadProducts() {
+  return window.MOCK_PRODUCTS ?? [];
+}
+
+function getFilteredProducts() {
   const query = state.filters.query.trim().toLowerCase();
 
   return state.products.filter((product) => {
     const matchesQuery =
       !query ||
-      product.name.toLowerCase().includes(query) ||
-      product.description.toLowerCase().includes(query);
+      product.nome.toLowerCase().includes(query) ||
+      product.descricao.toLowerCase().includes(query);
 
-    const matchesCategory =
-      state.filters.category === 'all' || product.category === state.filters.category;
+    const matchesPrice = product.preco <= state.filters.maxPrice;
 
-    const matchesPrice = product.price <= state.filters.maxPrice;
-
-    return matchesQuery && matchesCategory && matchesPrice;
+    return matchesQuery && matchesPrice;
   });
-};
+}
 
-const getCartItems = () => Object.values(state.cart);
+function getCartItems() {
+  return Object.values(state.cart);
+}
 
 /**
- * Renderiza cards de produto de forma centralizada.
+ * Renderiza catálogo dinamicamente com os dados carregados.
+ * Remove necessidade de produto hardcoded no HTML.
  */
 function renderProducts() {
   const products = getFilteredProducts();
@@ -65,14 +64,12 @@ function renderProducts() {
     .map(
       (product) => `
       <article class="card">
-        <h3>${product.name}</h3>
-        <p>${product.description}</p>
-        <p><strong>Categoria:</strong> ${product.category}</p>
+        <img class="card__image" src="${product.imagem}" alt="${product.nome}" loading="lazy" />
+        <h3>${product.nome}</h3>
+        <p>${product.descricao}</p>
         <div class="card__footer">
-          <strong>${formatCurrency(product.price)}</strong>
-          <button class="btn btn--secondary" data-action="add" data-id="${product.id}" type="button">
-            Adicionar
-          </button>
+          <strong>${formatCurrency(product.preco)}</strong>
+          <button class="btn btn--secondary" data-action="add" data-id="${product.id}" type="button">Adicionar</button>
         </div>
       </article>
     `,
@@ -83,9 +80,6 @@ function renderProducts() {
   elements.emptyState.hidden = products.length > 0;
 }
 
-/**
- * Renderiza o carrinho e resumo.
- */
 function renderCart() {
   const items = getCartItems();
 
@@ -94,10 +88,10 @@ function renderCart() {
       (item) => `
       <li class="cart-item">
         <div class="cart-item__top">
-          <strong>${item.name}</strong>
+          <strong>${item.nome}</strong>
           <button class="btn btn--danger" data-action="remove" data-id="${item.id}" type="button">Remover</button>
         </div>
-        <small>${formatCurrency(item.price)} cada</small>
+        <small>${formatCurrency(item.preco)} cada</small>
         <div class="cart-item__qty">
           <button class="btn btn--ghost" data-action="decrease" data-id="${item.id}" type="button">-</button>
           <span>${item.quantity}</span>
@@ -109,28 +103,12 @@ function renderCart() {
     .join('');
 
   const count = items.reduce((sum, item) => sum + item.quantity, 0);
-  const total = items.reduce((sum, item) => sum + item.quantity * item.price, 0);
+  const total = items.reduce((sum, item) => sum + item.quantity * item.preco, 0);
 
   elements.cartCount.textContent = String(count);
   elements.cartTotal.textContent = formatCurrency(total);
 }
 
-/**
- * Preenche o select de categoria dinamicamente a partir dos dados.
- */
-function populateCategoryOptions() {
-  const categories = [...new Set(state.products.map((product) => product.category))];
-
-  const optionsHtml = categories
-    .map((category) => `<option value="${category}">${category}</option>`)
-    .join('');
-
-  elements.categorySelect.insertAdjacentHTML('beforeend', optionsHtml);
-}
-
-/**
- * Atualiza estado do carrinho sem duplicar lógica de add/increase/decrease.
- */
 function updateCart(productId, operation) {
   const product = state.products.find((item) => item.id === productId);
   if (!product) return;
@@ -158,17 +136,9 @@ function updateCart(productId, operation) {
   renderCart();
 }
 
-/**
- * Registra eventos de UI (filtros, clique em botões e tema).
- */
 function bindEvents() {
   elements.searchInput.addEventListener('input', (event) => {
     state.filters.query = event.target.value;
-    renderProducts();
-  });
-
-  elements.categorySelect.addEventListener('change', (event) => {
-    state.filters.category = event.target.value;
     renderProducts();
   });
 
@@ -179,9 +149,8 @@ function bindEvents() {
   });
 
   elements.clearFiltersBtn.addEventListener('click', () => {
-    state.filters = { query: '', category: 'all', maxPrice: 500 };
+    state.filters = { query: '', maxPrice: 500 };
     elements.searchInput.value = '';
-    elements.categorySelect.value = 'all';
     elements.priceInput.value = '500';
     elements.priceLabel.textContent = 'Até $500';
     renderProducts();
@@ -200,11 +169,8 @@ function bindEvents() {
   });
 }
 
-/**
- * Inicialização da aplicação.
- */
-function init() {
-  populateCategoryOptions();
+async function init() {
+  state.products = await loadProducts();
   bindEvents();
   renderProducts();
   renderCart();

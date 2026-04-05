@@ -1,48 +1,48 @@
 /**
- * Base de dados simulada.
- * Em um backend real, essa lista viria de uma API.
+ * Fonte local de dados (mock).
+ * Futuramente, esta lista pode vir de uma API sem alterar o restante da UI.
  */
-window.MARKETPLACE_PRODUCTS = [
+window.MOCK_PRODUCTS = [
   {
     id: 'crm-pro',
-    name: 'CRM Pro',
-    category: 'Vendas',
-    description: 'Gestão de funil de vendas com automações e relatórios.',
-    price: 79,
+    nome: 'CRM Pro',
+    descricao: 'Gestão de funil de vendas com automações e relatórios.',
+    preco: 79,
+    imagem: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=640&auto=format&fit=crop&q=60',
   },
   {
     id: 'analytics-x',
-    name: 'Analytics X',
-    category: 'Analytics',
-    description: 'Painéis em tempo real para métricas de produto e negócio.',
-    price: 129,
+    nome: 'Analytics X',
+    descricao: 'Dashboards em tempo real para métricas de produto e negócio.',
+    preco: 129,
+    imagem: 'https://images.unsplash.com/photo-1551281044-8b7a4cee4c9c?w=640&auto=format&fit=crop&q=60',
   },
   {
     id: 'invoice-hub',
-    name: 'Invoice Hub',
-    category: 'Financeiro',
-    description: 'Emissão e conciliação de notas fiscais para times financeiros.',
-    price: 49,
+    nome: 'Invoice Hub',
+    descricao: 'Emissão e conciliação de notas para times financeiros.',
+    preco: 49,
+    imagem: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=640&auto=format&fit=crop&q=60',
   },
   {
     id: 'shield-sec',
-    name: 'Shield Security',
-    category: 'Segurança',
-    description: 'Monitoramento de ameaças com alertas e trilha de auditoria.',
-    price: 199,
+    nome: 'Shield Security',
+    descricao: 'Monitoramento de ameaças com alertas e trilha de auditoria.',
+    preco: 199,
+    imagem: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=640&auto=format&fit=crop&q=60',
   },
   {
     id: 'support-desk',
-    name: 'Support Desk',
-    category: 'Atendimento',
-    description: 'Central de tickets com SLA, macros e base de conhecimento.',
-    price: 59,
+    nome: 'Support Desk',
+    descricao: 'Central de tickets com SLA e base de conhecimento.',
+    preco: 59,
+    imagem: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=640&auto=format&fit=crop&q=60',
   },
   {
     id: 'mail-boost',
-    name: 'Mail Boost',
-    category: 'Marketing',
-    description: 'Campanhas de e-mail com segmentação e testes A/B.',
-    price: 39,
+    nome: 'Mail Boost',
+    descricao: 'Campanhas de e-mail com segmentação e testes A/B.',
+    preco: 39,
+    imagem: 'https://images.unsplash.com/photo-1521791055366-0d553872125f?w=640&auto=format&fit=crop&q=60',
   },
 ];
