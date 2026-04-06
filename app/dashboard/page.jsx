@@ -3,12 +3,19 @@ import { redirect } from 'next/navigation';
 
 import { authOptions } from '@/lib/auth-options';
 
-export default async function DashboardPage() {
-  const session = await getServerSession(authOptions);
+const allowedRoles = new Set(['buyer', 'seller', 'freelancer']);
 
-  if (!session?.user) {
-    redirect('/auth/login?callbackUrl=/dashboard');
+export default async function DashboardPage() {
+  try {
+    const session = await getServerSession(authOptions);
+    const role = session?.user?.role;
+
+    if (role && allowedRoles.has(role)) {
+      redirect(`/dashboard/${role}`);
+    }
+  } catch {
+    // Fallback below keeps dashboard route available even without auth context.
   }
 
-  redirect(`/dashboard/${session.user.role}`);
+  redirect('/auth/login?callbackUrl=/dashboard');
 }
