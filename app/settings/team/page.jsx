@@ -10,7 +10,12 @@ export default function SettingsTeamPage() {
     <main className="min-h-screen bg-background-light px-6 py-10">
       <section className="mx-auto max-w-5xl rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
         <p className="text-sm font-semibold uppercase tracking-wide text-primary">Settings</p>
-        <h1 className="text-3xl font-black text-slate-900">Team Management</h1>
+        <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
+          <h1 className="text-3xl font-black text-slate-900">Team Management</h1>
+          <Link href="/settings/security" className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700">
+            Voltar para configurações
+          </Link>
+        </div>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           <article className="rounded-xl border border-slate-200 p-4">
