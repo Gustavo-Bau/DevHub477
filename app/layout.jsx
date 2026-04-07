@@ -1,5 +1,6 @@
 import './globals.css';
 import { Providers } from '@/app/providers';
+import { GlobalRouteBar } from '@/components/GlobalRouteBar';
 
 export const metadata = {
   title: 'DevHub Web',
@@ -31,7 +32,10 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <GlobalRouteBar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
