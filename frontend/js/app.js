@@ -1,14 +1,36 @@
 import { renderProductList } from './components/productList.js';
 import { cadastrarUsuario, loginUsuario, obterSessao } from './services/authService.js';
-import { addItemToCart, getCartItemsCount } from './services/cartService.js';
 import { filtrarProdutos, listarProdutos } from './services/produtosService.js';
 
+const CART_KEY = 'devhub:cart';
 let produtosCache = [];
+
+function getCart() {
+  const raw = localStorage.getItem(CART_KEY);
+  return raw ? JSON.parse(raw) : [];
+}
+
+function saveCart(cart) {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+function addToCart(produtoId) {
+  const cart = getCart();
+  const found = cart.find((item) => item.id === produtoId);
+  if (found) {
+    found.qty += 1;
+  } else {
+    cart.push({ id: produtoId, qty: 1 });
+  }
+  saveCart(cart);
+  updateCartBadge();
+}
 
 function updateCartBadge() {
   const badge = document.querySelector('[data-cart-badge]');
   if (!badge) return;
-  badge.textContent = String(getCartItemsCount());
+  const totalItems = getCart().reduce((sum, item) => sum + item.qty, 0);
+  badge.textContent = String(totalItems);
 }
 
 function setupSearch() {
@@ -79,8 +101,7 @@ function setupProductCardEvents() {
     if (!button) return;
 
     const produtoId = Number(button.getAttribute('data-add-cart'));
-    addItemToCart(produtoId);
-    updateCartBadge();
+    addToCart(produtoId);
   });
 }
 
