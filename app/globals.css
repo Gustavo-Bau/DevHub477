@@ -6,3 +6,40 @@ body { font-family: 'Inter', sans-serif; }
   vertical-align: middle;
 }
 a { color: inherit; }
+
+.global-route-bar {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  padding: 8px 12px;
+}
+
+.global-route-bar__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.global-route-bar__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(107, 38, 217, 0.25);
+  background: rgba(107, 38, 217, 0.06);
+  color: #6b26d9;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.global-route-bar__link:hover {
+  background: rgba(107, 38, 217, 0.12);
+}
