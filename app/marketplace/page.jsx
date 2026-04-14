@@ -1,138 +1,181 @@
 'use client';
 
-import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { ProductCard } from '@/components/marketplace/ProductCard';
+import { ProductFilters } from '@/components/marketplace/ProductFilters';
+import { TopRankedProducts } from '@/components/marketplace/TopRankedProducts';
+import { LiveNotificationFeed } from '@/components/notifications/LiveNotificationFeed';
+import {
+  getAutocompleteSuggestions,
+  getCategories,
+  getNotifications,
+  getSponsoredProducts,
+  getTopRankedProducts,
+  getTopSellers,
+  searchProducts,
+} from '@/lib/marketplace-service';
 
-const products = [
-  { id: 'cloudscale-pro', name: 'CloudScale Pro', vendor: 'NexaSystems', category: 'SaaS & Cloud', platform: 'Web', price: 49, rating: 4.9 },
-  { id: 'dataflow-engine', name: 'DataFlow Engine', vendor: 'QuantaStream', category: 'Dev Tools', platform: 'Desktop', price: 199, rating: 4.7 },
-  { id: 'sentinel-guard', name: 'Sentinel Guard', vendor: 'CyberArmor Lab', category: 'Security', platform: 'Web', price: 29, rating: 4.8 },
-  { id: 'insightx-analytics', name: 'InsightX Analytics', vendor: 'MetricMaster', category: 'Analytics', platform: 'Web', price: 12, rating: 4.5 },
-  { id: 'devconsole-plus', name: 'DevConsole Plus', vendor: 'OpenTools Foundation', category: 'Dev Tools', platform: 'CLI', price: 0, rating: 5.0 },
-  { id: 'micromesh-api', name: 'MicroMesh API', vendor: 'WebStack Solutions', category: 'SaaS & Cloud', platform: 'Web', price: 89, rating: 4.6 },
-];
-
-const categories = ['All Categories', 'SaaS & Cloud', 'Dev Tools', 'Security', 'Analytics'];
-const platforms = ['Web', 'Desktop', 'Mobile', 'CLI'];
-const ratings = [4, 3];
+const defaultFilters = {
+  query: '',
+  category: 'All',
+  minPrice: 0,
+  maxPrice: 250,
+  minRating: 4,
+  location: '',
+  sort: 'relevance',
+  sponsoredOnly: false,
+};
 
 export default function MarketplacePage() {
-  const [query, setQuery] = useState('');
-  const [category, setCategory] = useState('All Categories');
-  const [platform, setPlatform] = useState('Web');
-  const [maxPrice, setMaxPrice] = useState(2500);
-  const [minRating, setMinRating] = useState(4);
+  const [filters, setFilters] = useState(defaultFilters);
+  const [suggestions, setSuggestions] = useState([]);
+  const [notifications] = useState(getNotifications());
 
-  const filteredProducts = useMemo(() => {
-    const lowerQuery = query.trim().toLowerCase();
+  useEffect(() => {
+    if (filters.query.trim().length > 1) {
+      setSuggestions(getAutocompleteSuggestions(filters.query));
+    } else {
+      setSuggestions([]);
+    }
+  }, [filters.query]);
 
-    return products.filter((product) => {
-      const categoryMatch = category === 'All Categories' || product.category === category;
-      const platformMatch = platform ? product.platform === platform : true;
-      const priceMatch = product.price <= maxPrice;
-      const ratingMatch = product.rating >= minRating;
-      const textMatch =
-        !lowerQuery
-        || product.name.toLowerCase().includes(lowerQuery)
-        || product.vendor.toLowerCase().includes(lowerQuery)
-        || product.category.toLowerCase().includes(lowerQuery);
+  const products = useMemo(() => searchProducts(filters), [filters]);
+  const featuredProducts = useMemo(() => getSponsoredProducts(), []);
+  const rankedProducts = useMemo(() => getTopRankedProducts(4), []);
+  const topSellers = useMemo(() => getTopSellers(3), []);
+  const categories = useMemo(() => ['All', ...getCategories()], []);
 
-      return categoryMatch && platformMatch && priceMatch && ratingMatch && textMatch;
-    });
-  }, [category, maxPrice, minRating, platform, query]);
+  const handleFilterChange = (update) => {
+    setFilters((current) => ({ ...current, ...update }));
+  };
+
+  const handleSuggestionClick = (term) => {
+    setFilters((current) => ({ ...current, query: term }));
+    setSuggestions([]);
+  };
 
   return (
     <main className="min-h-screen bg-background-light px-4 py-8 lg:px-10">
-      <div className="mx-auto grid max-w-[1400px] gap-8 lg:grid-cols-[280px_1fr]">
-        <aside className="space-y-8 rounded-2xl border border-slate-200 bg-white p-6">
-          <section>
-            <h2 className="text-xl font-black text-slate-800">Categories</h2>
-            <div className="mt-4 space-y-2">
-              {categories.map((item) => (
-                <button
-                  key={item}
-                  type="button"
-                  onClick={() => setCategory(item)}
-                  className={`w-full rounded-xl px-4 py-3 text-left font-semibold transition ${category === item ? 'bg-primary/10 text-primary' : 'hover:bg-slate-100 text-slate-700'}`}
-                >
-                  {item}
-                </button>
-              ))}
+      <div className="mx-auto grid max-w-[1440px] gap-8 xl:grid-cols-[320px_1.7fr_320px]">
+        <ProductFilters categories={categories} filters={filters} onChange={handleFilterChange} />
+
+        <section className="space-y-8">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Marketplace</p>
+                <h1 className="mt-3 text-3xl font-black text-slate-900">Encontre o software ideal</h1>
+                <p className="mt-2 max-w-2xl text-sm text-slate-600">
+                  Busca por reputação do vendedor, produtos patrocinados, ranking e recomendações bilaterais para acelerar conversões.
+                </p>
+              </div>
+
+              <div className="relative w-full max-w-lg">
+                <input
+                  value={filters.query}
+                  onChange={(event) => handleFilterChange({ query: event.target.value })}
+                  placeholder="Buscar software, categoria ou vendedor"
+                  className="w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/10"
+                />
+                {suggestions.length > 0 ? (
+                  <div className="absolute left-0 right-0 top-full z-10 mt-2 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg">
+                    {suggestions.map((suggestion) => (
+                      <button
+                        key={suggestion}
+                        type="button"
+                        onClick={() => handleSuggestionClick(suggestion)}
+                        className="w-full px-4 py-3 text-left text-sm text-slate-700 hover:bg-slate-100"
+                      >
+                        {suggestion}
+                      </button>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
             </div>
-          </section>
+          </div>
 
-          <section>
-            <h2 className="text-xl font-black text-slate-800">Platform</h2>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {platforms.map((item) => (
-                <button
-                  key={item}
-                  type="button"
-                  onClick={() => setPlatform(item)}
-                  className={`rounded-xl border px-3 py-2 text-sm font-semibold ${platform === item ? 'border-primary bg-primary/10 text-primary' : 'border-slate-200 text-slate-700 hover:border-primary/50'}`}
-                >
-                  {item}
-                </button>
-              ))}
+          <div className="space-y-6">
+            <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Destaques</p>
+                  <h2 className="mt-2 text-xl font-black text-slate-900">Produtos patrocinados</h2>
+                </div>
+                <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-primary">Promoção</span>
+              </div>
+
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {featuredProducts.map((product) => (
+                  <div key={product.id} className="rounded-3xl border border-slate-100 bg-slate-50 p-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Patrocinado</p>
+                    <h3 className="mt-3 text-lg font-bold text-slate-900">{product.title}</h3>
+                    <p className="mt-2 text-sm text-slate-600">{product.brief}</p>
+                    <div className="mt-4 flex items-center justify-between text-sm text-slate-700">
+                      <span>⭐ {product.rating.toFixed(1)}</span>
+                      <span>{product.sales} vendas</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Resultados</p>
+                  <h2 className="mt-2 text-xl font-black text-slate-900">Software encontrados</h2>
+                </div>
+                <span className="text-sm text-slate-500">{products.length} itens ativos</span>
+              </div>
+
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
+                {products.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+
+              {!products.length ? (
+                <div className="mt-6 rounded-3xl bg-slate-50 p-6 text-sm text-slate-600">
+                  Nenhum produto corresponde aos filtros escolhidos. Ajuste a busca ou remova alguns filtros.
+                </div>
+              ) : null}
+            </section>
+          </div>
+        </section>
+
+        <aside className="space-y-6">
+          <LiveNotificationFeed initialNotifications={notifications} />
+
+          <TopRankedProducts products={rankedProducts} />
+
+          <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Vendedores</p>
+                <h2 className="mt-2 text-xl font-black text-slate-900">Top parceiros</h2>
+              </div>
+              <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-slate-700">Reputação</span>
             </div>
-          </section>
 
-          <section>
-            <h2 className="text-xl font-black text-slate-800">Price Range</h2>
-            <input className="mt-4 w-full" type="range" min="0" max="2500" step="10" value={maxPrice} onChange={(e) => setMaxPrice(Number(e.target.value))} />
-            <p className="mt-2 text-sm font-semibold text-slate-600">Até ${maxPrice}</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-black text-slate-800">Minimum Rating</h2>
-            <div className="mt-4 grid grid-cols-2 gap-2">
-              {ratings.map((item) => (
-                <button
-                  key={item}
-                  type="button"
-                  onClick={() => setMinRating(item)}
-                  className={`rounded-xl border px-3 py-3 text-sm font-bold ${minRating === item ? 'border-primary bg-primary/10 text-primary' : 'border-slate-200 text-slate-700'}`}
-                >
-                  {item}+ Stars
-                </button>
+            <div className="mt-6 space-y-4">
+              {topSellers.map((seller) => (
+                <article key={seller.id} className="rounded-3xl border border-slate-100 bg-slate-50 p-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="text-base font-bold text-slate-900">{seller.name}</p>
+                      <p className="mt-1 text-sm text-slate-600">{seller.bio}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-lg font-black text-primary">{seller.reputation.toFixed(1)} ★</p>
+                      <p className="text-xs text-slate-500">{seller.totalSales} vendas</p>
+                    </div>
+                  </div>
+                </article>
               ))}
             </div>
           </section>
         </aside>
-
-        <section className="rounded-2xl border border-slate-200 bg-white p-6 lg:p-8">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <h1 className="text-3xl font-black text-slate-900">Marketplace</h1>
-              <p className="text-sm text-slate-600">{filteredProducts.length} resultado(s)</p>
-            </div>
-            <input
-              className="w-full max-w-md rounded-xl border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-primary"
-              placeholder="Buscar software, vendedor ou categoria"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-          </div>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {filteredProducts.map((product) => (
-              <article key={product.id} className="rounded-xl border border-slate-200 p-4">
-                <p className="text-xs font-semibold uppercase text-primary">{product.category}</p>
-                <h3 className="mt-2 text-lg font-bold text-slate-900">{product.name}</h3>
-                <p className="text-sm text-slate-600">{product.vendor}</p>
-                <p className="mt-2 text-sm text-slate-600">{product.platform} • ⭐ {product.rating.toFixed(1)}</p>
-                <div className="mt-4 flex items-center justify-between">
-                  <strong className="text-primary">${product.price}{product.price ? '/mo' : ''}</strong>
-                  <Link href={`/product/${product.id}`} className="rounded-lg bg-primary px-3 py-2 text-sm font-semibold text-white">
-                    Ver detalhes
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          {!filteredProducts.length && <p className="mt-6 rounded-xl bg-slate-50 p-4 text-sm text-slate-600">Nenhum item encontrado para os filtros selecionados.</p>}
-        </section>
       </div>
     </main>
   );

@@ -58,12 +58,13 @@ export async function POST(request) {
 
     const total = (session.amount_total ?? 0) / 100;
 
+    const taxAmount = safeItems.reduce((sum, item) => sum + item.price * item.quantity, 0) * 0.08;
     const order = await prisma.order.create({
       data: {
         userId: session.metadata?.userId || null,
         email: session.customer_details?.email ?? session.customer_email ?? 'unknown@example.com',
-        total,
-        currency: session.currency ?? 'usd',
+        totalAmount: total,
+        taxAmount,
         paymentMethod: session.payment_method_types?.[0] ?? 'card',
         paymentStatus: session.payment_status,
         stripeSessionId: session.id,
@@ -80,7 +81,7 @@ export async function POST(request) {
       include: { items: true },
     });
 
-    await sendConfirmationEmail(order.email, order.id, order.total);
+    await sendConfirmationEmail(order.email, order.id, order.totalAmount);
 
     return NextResponse.json({ orderId: order.id });
   } catch (error) {
