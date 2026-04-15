@@ -86,18 +86,18 @@ export default function RootLayout({ children }) {
           <header>
             <GlobalRouteBar />
           </header>
-          <main>
+          <div className="app-content">
             {children}
-          </main>
-          <footer className="bg-slate-950 text-slate-200">
-            <div className="mx-auto max-w-6xl space-y-4 px-4 py-8 text-sm sm:px-6 lg:px-8">
+          </div>
+          <footer>
+            <div>
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <p className="font-semibold">DevHub</p>
-                <div className="flex flex-wrap gap-3 text-slate-400">
-                  <a href="/privacy" className="hover:text-white">Privacidade</a>
-                  <a href="/terms" className="hover:text-white">Termos</a>
-                  <a href="/contact" className="hover:text-white">Contato</a>
-                  <a href="/marketplace" className="hover:text-white">Marketplace</a>
+                <div className="footer-links text-slate-400">
+                  <a href="/privacy">Privacidade</a>
+                  <a href="/terms">Termos</a>
+                  <a href="/contact">Contato</a>
+                  <a href="/marketplace">Marketplace</a>
                 </div>
               </div>
               <p className="text-slate-500">© {new Date().getFullYear()} DevHub. Todos os direitos reservados.</p>
