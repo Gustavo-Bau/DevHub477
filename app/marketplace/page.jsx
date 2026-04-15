@@ -55,9 +55,11 @@ export default function MarketplacePage() {
   };
 
   return (
-    <main className="min-h-screen bg-background-light px-4 py-8 lg:px-10">
+    <main className="min-h-screen bg-slate-50 px-4 py-8 lg:px-10">
       <div className="mx-auto grid max-w-[1440px] gap-8 xl:grid-cols-[320px_1.7fr_320px]">
-        <ProductFilters categories={categories} filters={filters} onChange={handleFilterChange} />
+        <div className="xl:sticky xl:top-24 xl:self-start">
+          <ProductFilters categories={categories} filters={filters} onChange={handleFilterChange} />
+        </div>
 
         <section className="space-y-8">
           <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">

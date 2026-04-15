@@ -81,26 +81,26 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body>
+      <body className="min-h-screen bg-slate-50 text-slate-900">
         <Providers>
-          <header>
+          <header className="site-header">
             <GlobalRouteBar />
           </header>
-          <div className="app-content">
+          <main className="app-content">
             {children}
-          </div>
-          <footer>
+          </main>
+          <footer className="site-footer">
             <div>
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <p className="font-semibold">DevHub</p>
-                <div className="footer-links text-slate-400">
+                <p className="font-semibold text-white">DevHub</p>
+                <div className="footer-links text-slate-300">
                   <a href="/privacy">Privacidade</a>
                   <a href="/terms">Termos</a>
                   <a href="/contact">Contato</a>
                   <a href="/marketplace">Marketplace</a>
                 </div>
               </div>
-              <p className="text-slate-500">© {new Date().getFullYear()} DevHub. Todos os direitos reservados.</p>
+              <p className="text-slate-400">© {new Date().getFullYear()} DevHub. Todos os direitos reservados.</p>
             </div>
           </footer>
         </Providers>

@@ -1,8 +1,8 @@
 'use client';
 
-export function ProductFilters({ categories = [], filters, onChange }) {
+export function ProductFilters({ categories = [], filters, onChange, className = '' }) {
   return (
-    <aside className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+    <aside className={`rounded-3xl border border-slate-200 bg-white p-6 shadow-sm ${className}`}>
       <h2 className="text-xl font-black text-slate-900">Filtros avançados</h2>
       <div className="mt-5 space-y-4">
         <label className="block text-sm font-semibold text-slate-700">
