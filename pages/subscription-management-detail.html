@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
-<html lang="en"><head>
+<html lang="pt-BR"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>DEVHUB - Subscription Management</title>
+<title>DEVHUB - Assinatura Gerenciarment</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -26,10 +26,8 @@
             },
         }
     </script>
-<style>
-        body { font-family: 'Inter', sans-serif; }
-        .material-symbols-outlined { font-size: 20px; }
-    </style>
+<link rel="stylesheet" href="../css/subscription-management-detail.css"/>
+
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
 <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
@@ -38,15 +36,15 @@
 <div class="flex items-center gap-8">
 <div class="flex items-center gap-4 text-primary">
 <div class="size-8">
-<img alt="DEVHUB logo" class="size-8 rounded-lg object-cover" src="/assets/devhublogo.jpeg"/>
+<img alt="DEVHUB logo" class="size-8 rounded-lg object-cover" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236b26d9'/%3E%3Cpath d='M18 20h13c8 0 15 5 15 12s-7 12-15 12H18V20zm8 7v10h5c4 0 7-2 7-5s-3-5-7-5h-5z' fill='white'/%3E%3C/svg%3E"/>
 </div>
 <h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">DEVHUB</h2>
 </div>
 <nav class="hidden md:flex items-center gap-9">
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Dashboard</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Marketplace</a>
-<a class="text-primary text-sm font-semibold" href="#">Subscriptions</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Settings</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Painel</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Mercado</a>
+<a class="text-primary text-sm font-semibold" href="#">Assinaturas</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Configurações</a>
 </nav>
 </div>
 <div class="flex flex-1 justify-end gap-6 items-center">
@@ -55,7 +53,7 @@
 <div class="text-slate-400 flex items-center justify-center pl-3">
 <span class="material-symbols-outlined">search</span>
 </div>
-<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 px-3 text-sm placeholder:text-slate-400" placeholder="Search services..."/>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 px-3 text-sm placeholder:text-slate-400" placeholder="Buscar services..."/>
 </div>
 </label>
 <button class="relative text-slate-500 hover:text-primary">
@@ -68,11 +66,11 @@
 <main class="flex-1 px-6 lg:px-20 py-8">
 <div class="max-w-7xl mx-auto">
 <div class="flex flex-wrap gap-2 items-center mb-6">
-<a class="text-slate-500 text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-slate-500 text-sm font-medium hover:text-primary transition-colors" href="#">Painel</a>
 <span class="material-symbols-outlined text-slate-400 text-xs">chevron_right</span>
-<a class="text-slate-500 text-sm font-medium hover:text-primary transition-colors" href="#">Subscriptions</a>
+<a class="text-slate-500 text-sm font-medium hover:text-primary transition-colors" href="#">Assinaturas</a>
 <span class="material-symbols-outlined text-slate-400 text-xs">chevron_right</span>
-<span class="text-slate-900 dark:text-white text-sm font-semibold">CloudScale Pro</span>
+<span class="text-slate-900 dark:text-white text-sm font-semibold">Produto selecionado</span>
 </div>
 <div class="flex flex-col lg:flex-row gap-8">
 <div class="flex-1 space-y-8">
@@ -83,34 +81,34 @@
 <span class="material-symbols-outlined text-primary text-4xl">cloud_queue</span>
 </div>
 <div>
-<h1 class="text-2xl font-bold text-slate-900 dark:text-white">CloudScale Pro</h1>
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white">Produto selecionado</h1>
 <div class="flex items-center gap-2 mt-1">
-<span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Active</span>
+<span class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Ativo</span>
 <span class="text-slate-400 text-sm">•</span>
-<p class="text-slate-500 dark:text-slate-400 text-sm">Enterprise Grade Computing</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Plano conectado ao banco</p>
 </div>
 </div>
 </div>
 <div class="flex gap-3">
-<button class="flex-1 sm:flex-none px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">Upgrade Plan</button>
-<button class="flex-1 sm:flex-none px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">Manage Team</button>
+<button class="flex-1 sm:flex-none px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">Atualizar plano</button>
+<button class="flex-1 sm:flex-none px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">Gerenciar equipe</button>
 </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-10 pt-8 border-t border-slate-100 dark:border-slate-800">
 <div class="space-y-1">
-<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Current Plan</p>
+<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Plano atual</p>
 <p class="text-slate-900 dark:text-white font-semibold">Pro Tier</p>
 </div>
 <div class="space-y-1">
-<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Billing Cycle</p>
-<p class="text-slate-900 dark:text-white font-semibold">Monthly</p>
+<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Cobrança Cycle</p>
+<p class="text-slate-900 dark:text-white font-semibold">Mensal</p>
 </div>
 <div class="space-y-1">
-<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Next Billing</p>
+<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Próxima cobrança</p>
 <p class="text-slate-900 dark:text-white font-semibold">Oct 24, 2023</p>
 </div>
 <div class="space-y-1">
-<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Amount</p>
+<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Valor</p>
 <p class="text-primary font-bold">$49.00 <span class="text-slate-400 font-normal text-xs">/mo</span></p>
 </div>
 </div>
@@ -122,13 +120,13 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <div class="space-y-4">
 <div class="flex justify-between items-end">
-<p class="text-sm font-semibold text-slate-700 dark:text-slate-300">API Calls</p>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Chamadas de API</p>
 <p class="text-xs text-slate-500">82.4k / 100k</p>
 </div>
 <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2">
 <div class="bg-primary h-2 rounded-full" style="width: 82%"></div>
 </div>
-<p class="text-[11px] text-slate-400 leading-relaxed">Resets in 12 days. 18% remaining in current cycle.</p>
+<p class="text-[11px] text-slate-400 leading-relaxed">Reinicia em 12 dias. Restam 18% do ciclo atual.</p>
 </div>
 <div class="space-y-4">
 <div class="flex justify-between items-end">
@@ -148,22 +146,22 @@
 <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2">
 <div class="bg-primary h-2 rounded-full" style="width: 29%"></div>
 </div>
-<p class="text-[11px] text-slate-400 leading-relaxed">Dedicated worker instances active for 14.5 days total.</p>
+<p class="text-[11px] text-slate-400 leading-relaxed">Instâncias dedicadas ativas por 14,5 dias no total.</p>
 </div>
 </div>
 </section>
 <section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
 <div class="px-6 py-5 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
-<h3 class="text-lg font-bold text-slate-900 dark:text-white">Billing History</h3>
-<button class="text-primary text-sm font-medium hover:underline">View all</button>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Cobrança History</h3>
+<button class="text-primary text-sm font-medium hover:underline">Ver tudo</button>
 </div>
 <div class="overflow-x-auto">
 <table class="w-full text-left">
 <thead>
 <tr class="bg-slate-50 dark:bg-slate-800/50 text-slate-400 text-xs font-semibold uppercase tracking-wider">
-<th class="px-6 py-4">Invoice ID</th>
+<th class="px-6 py-4">Fatura ID</th>
 <th class="px-6 py-4">Date</th>
-<th class="px-6 py-4">Amount</th>
+<th class="px-6 py-4">Valor</th>
 <th class="px-6 py-4">Status</th>
 <th class="px-6 py-4 text-right">Action</th>
 </tr>
@@ -214,10 +212,10 @@
 </section>
 <section class="flex flex-wrap gap-4 pt-4 pb-12">
 <button class="flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 rounded-xl font-semibold hover:border-primary/50 transition-all">
-<span class="material-symbols-outlined text-primary">credit_card</span> Change Payment Method
+<span class="material-symbols-outlined text-primary">credit_card</span> Change Forma de pagamento
                                 </button>
 <button class="flex items-center gap-2 px-6 py-3 text-rose-500 font-semibold hover:bg-rose-50 dark:hover:bg-rose-900/20 rounded-xl transition-all">
-<span class="material-symbols-outlined">cancel</span> Cancel Subscription
+<span class="material-symbols-outlined">cancel</span> Cancelar Assinatura
                                 </button>
 </section>
 </div>
@@ -231,11 +229,11 @@
 </li>
 <li class="flex items-start gap-3">
 <span class="material-symbols-outlined text-emerald-500 text-[18px]">check_circle</span>
-<span class="text-sm text-slate-600 dark:text-slate-400">Advanced security monitoring</span>
+<span class="text-sm text-slate-600 dark:text-slate-400">Monitoramento avançado de segurança</span>
 </li>
 <li class="flex items-start gap-3">
 <span class="material-symbols-outlined text-emerald-500 text-[18px]">check_circle</span>
-<span class="text-sm text-slate-600 dark:text-slate-400">24/7 Priority email support</span>
+<span class="text-sm text-slate-600 dark:text-slate-400">Suporte prioritário por e-mail 24/7</span>
 </li>
 <li class="flex items-start gap-3">
 <span class="material-symbols-outlined text-emerald-500 text-[18px]">check_circle</span>
@@ -246,21 +244,21 @@
 <span class="text-sm text-slate-600 dark:text-slate-400">API throughput: 500 req/s</span>
 </li>
 </ul>
-<button class="w-full mt-6 py-2 text-primary font-semibold text-sm border border-primary/20 bg-primary/5 hover:bg-primary/10 rounded-lg transition-colors">Compare All Plans</button>
+<button class="w-full mt-6 py-2 text-primary font-semibold text-sm border border-primary/20 bg-primary/5 hover:bg-primary/10 rounded-lg transition-colors">Comparar todos os planos</button>
 </div>
 <div class="bg-primary rounded-xl p-6 text-white shadow-lg shadow-primary/20 relative overflow-hidden">
 <div class="absolute -right-6 -bottom-6 opacity-20 transform -rotate-12">
 <span class="material-symbols-outlined text-9xl">support_agent</span>
 </div>
 <div class="relative z-10">
-<h3 class="font-bold text-lg mb-2">Need Help?</h3>
-<p class="text-primary-100 text-sm mb-6 opacity-90 leading-relaxed">Our cloud specialists are ready to help you optimize your stack.</p>
+<h3 class="font-bold text-lg mb-2">Need Ajuda?</h3>
+<p class="text-primary-100 text-sm mb-6 opacity-90 leading-relaxed">Nossos especialistas estão prontos para otimizar sua estrutura.</p>
 <div class="space-y-3">
 <button class="w-full bg-white text-primary py-2.5 rounded-lg font-bold text-sm hover:bg-slate-50 transition-colors flex items-center justify-center gap-2">
-<span class="material-symbols-outlined">chat</span> Chat with Support
+<span class="material-symbols-outlined">chat</span> Chat with Suporte
                                         </button>
 <button class="w-full bg-primary-dark/20 border border-white/20 py-2.5 rounded-lg font-bold text-sm hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
-<span class="material-symbols-outlined">mail</span> Email Specialist
+<span class="material-symbols-outlined">mail</span> E-mail Specialist
                                         </button>
 </div>
 </div>
@@ -269,7 +267,7 @@
 <h4 class="text-slate-900 dark:text-white font-bold text-sm mb-3">Service Maintenance</h4>
 <div class="flex items-center gap-3">
 <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-<p class="text-xs text-slate-600 dark:text-slate-400 font-medium">All systems operational</p>
+<p class="text-xs text-slate-600 dark:text-slate-400 font-medium">Todos os sistemas operacionais</p>
 </div>
 <p class="text-[11px] text-slate-400 mt-3 leading-relaxed">Scheduled maintenance in US-East-1 on Oct 28, 04:00 UTC.</p>
 </div>
@@ -280,12 +278,12 @@
 <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-10 px-6 lg:px-20 mt-12">
 <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
 <div class="flex items-center gap-2 text-slate-400">
-<span class="text-xs">© 2026 DEVHUB Software Marketplace. All rights reserved.</span>
+<span class="text-xs">© 2026 DEVHUB Mercado de Softwares. Todos os direitos reservados.</span>
 </div>
 <div class="flex gap-8">
-<a class="text-xs font-medium text-slate-500 hover:text-primary" href="#">Terms of Service</a>
-<a class="text-xs font-medium text-slate-500 hover:text-primary" href="#">Privacy Policy</a>
-<a class="text-xs font-medium text-slate-500 hover:text-primary" href="#">Cookie Settings</a>
+<a class="text-xs font-medium text-slate-500 hover:text-primary" href="#">Termos de serviço</a>
+<a class="text-xs font-medium text-slate-500 hover:text-primary" href="#">Política de privacidade</a>
+<a class="text-xs font-medium text-slate-500 hover:text-primary" href="#">Cookie Configurações</a>
 </div>
 </div>
 </footer>

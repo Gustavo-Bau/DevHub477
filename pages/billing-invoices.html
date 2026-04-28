@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
-<html lang="en"><head>
+<html lang="pt-BR"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -30,14 +30,8 @@
             },
         }
     </script>
-<style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
+<link rel="stylesheet" href="../css/billing-invoices.css"/>
+
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
 <div class="relative flex h-screen w-full overflow-hidden">
@@ -45,33 +39,33 @@
 <div class="flex flex-col gap-8">
 <div class="flex items-center gap-3 px-2">
 <div class="bg-primary rounded-lg size-10 flex items-center justify-center text-white">
-<img alt="DEVHUB logo" class="size-8 rounded-lg object-cover" src="/assets/devhublogo.jpeg"/>
+<img alt="DEVHUB logo" class="size-8 rounded-lg object-cover" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236b26d9'/%3E%3Cpath d='M18 20h13c8 0 15 5 15 12s-7 12-15 12H18V20zm8 7v10h5c4 0 7-2 7-5s-3-5-7-5h-5z' fill='white'/%3E%3C/svg%3E"/>
 </div>
 <div class="flex flex-col">
 <h1 class="text-slate-900 dark:text-white text-base font-bold leading-none">DEVHUB</h1>
-<p class="text-slate-500 dark:text-slate-400 text-xs font-medium">Marketplace</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium">Mercado</p>
 </div>
 </div>
 <nav class="flex flex-col gap-1">
-<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="/dashboard">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="./user-dashboard.html">
 <span class="material-symbols-outlined text-[22px]">dashboard</span>
-<span class="text-sm font-medium">Dashboard</span>
+<span class="text-sm font-medium">Painel</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="/projects/new">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="./user-dashboard.html">
 <span class="material-symbols-outlined text-[22px]">work</span>
-<span class="text-sm font-medium">Projects</span>
+<span class="text-sm font-medium">Projetos</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="/marketplace">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="./software-marketplace-dashboard.html">
 <span class="material-symbols-outlined text-[22px]">storefront</span>
-<span class="text-sm font-medium">Marketplace</span>
+<span class="text-sm font-medium">Mercado</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg transition-colors" href="/settings/billing">
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg transition-colors" href="./billing-invoices.html">
 <span class="material-symbols-outlined text-[22px] fill-1">payments</span>
-<span class="text-sm font-semibold">Billing</span>
+<span class="text-sm font-semibold">Cobrança</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="/settings/profile">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="./profile-settings.html">
 <span class="material-symbols-outlined text-[22px]">settings</span>
-<span class="text-sm font-medium">Settings</span>
+<span class="text-sm font-medium">Configurações</span>
 </a>
 </nav>
 </div>
@@ -82,7 +76,7 @@
 </div>
 <div class="flex flex-col">
 <p class="text-sm font-semibold text-slate-900 dark:text-white">Alex Rivera</p>
-<p class="text-xs text-slate-500">Pro Account</p>
+<p class="text-xs text-slate-500">Pro Conta</p>
 </div>
 </div>
 </div>
@@ -90,12 +84,12 @@
 <main class="flex-1 flex flex-col overflow-y-auto">
 <header class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md flex items-center justify-between px-8 sticky top-0 z-10">
 <div class="flex items-center gap-2">
-<h2 class="text-lg font-bold text-slate-900 dark:text-white">Billing &amp; Payments</h2>
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Cobrança &amp; Pagamentos</h2>
 </div>
 <div class="flex items-center gap-4">
 <div class="relative hidden md:block">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
-<input class="pl-10 pr-4 py-1.5 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Search invoices..." type="text"/>
+<input class="pl-10 pr-4 py-1.5 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary w-64" placeholder="Buscar invoices..." type="text"/>
 </div>
 <button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg relative">
 <span class="material-symbols-outlined">notifications</span>
@@ -109,18 +103,18 @@
 <div class="p-8 max-w-6xl mx-auto w-full space-y-8">
 <div class="flex flex-wrap items-center justify-between gap-4">
 <div>
-<h1 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Billing &amp; Payments</h1>
-<p class="text-slate-500 dark:text-slate-400 mt-1">Manage your payment methods and view your transaction history.</p>
+<h1 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Cobrança &amp; Pagamentos</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Gerencie seus métodos de pagamento e veja seu histórico de transações.</p>
 </div>
 <button class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg font-semibold flex items-center gap-2 transition-all shadow-sm">
 <span class="material-symbols-outlined text-xl">add</span>
-<span>Add Payment Method</span>
+<span>Add Forma de pagamento</span>
 </button>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 <div class="lg:col-span-2 space-y-6">
 <section>
-<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Saved Payment Methods</h3>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Salvard Forma de pagamentos</h3>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between h-44 shadow-sm relative overflow-hidden group">
 <div class="absolute top-0 right-0 p-4">
@@ -160,7 +154,7 @@
 <p class="text-slate-900 dark:text-white font-mono text-lg tracking-widest">•••• •••• •••• 8812</p>
 <div class="flex items-center justify-between mt-2">
 <p class="text-slate-500 text-xs font-medium uppercase tracking-tight">Exp 08/25</p>
-<p class="text-slate-500 text-xs font-medium uppercase tracking-tight">Mastercard World</p>
+<p class="text-slate-500 text-xs font-medium uppercase tracking-tight">Cartão Mastercard</p>
 </div>
 </div>
 </div>
@@ -169,11 +163,11 @@
 </div>
 <div class="space-y-6">
 <section>
-<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Billing Summary</h3>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Resumo da cobrança</h3>
 <div class="bg-primary text-white p-6 rounded-xl shadow-lg shadow-primary/20 relative overflow-hidden">
 <div class="absolute -right-8 -top-8 size-32 bg-white/10 rounded-full blur-2xl"></div>
 <div class="relative z-10">
-<p class="text-primary-100/80 text-sm font-medium">Next Payment</p>
+<p class="text-primary-100/80 text-sm font-medium">Próximo pagamento</p>
 <div class="flex items-baseline gap-1 mt-1">
 <span class="text-3xl font-black">$49.00</span>
 <span class="text-primary-100 text-sm">/month</span>
@@ -184,7 +178,7 @@
 </div>
 <div class="mt-4 pt-4 border-t border-white/20">
 <button class="w-full bg-white text-primary font-bold py-2 rounded-lg text-sm hover:bg-slate-50 transition-colors">
-                                            Update Plan
+                                            Atualizar plano
                                         </button>
 </div>
 </div>
@@ -194,9 +188,9 @@
 </div>
 <section>
 <div class="flex items-center justify-between mb-4">
-<h3 class="text-lg font-bold text-slate-900 dark:text-white">Billing History</h3>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Cobrança History</h3>
 <a download="devhub-invoices-export.csv" href="data:text/csv,invoice_id,date,amount,status%0AINV-9402,2023-09-01,49.00,Paid%0AINV-8812,2023-08-01,49.00,Paid" class="text-primary text-sm font-bold flex items-center gap-1 hover:underline">
-<span>Export All</span>
+<span>Exportar tudo</span>
 <span class="material-symbols-outlined text-sm">download</span>
 </a>
 </div>
@@ -205,9 +199,9 @@
 <table class="w-full text-left border-collapse">
 <thead>
 <tr class="bg-slate-50 dark:bg-slate-800/50">
-<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Invoice ID</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Fatura ID</th>
 <th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Date</th>
-<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Amount</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Valor</th>
 <th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
 <th class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">Action</th>
 </tr>
@@ -225,7 +219,7 @@
                                             </span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-right">
-<button onclick="openInvoiceModal(this)" data-invoice="#INV-9402" data-date="Sep 01, 2023" data-amount="$49.00" class="text-slate-400 hover:text-primary transition-colors">
+<button onclick="openFaturaModal(this)" data-invoice="#INV-9402" data-date="Sep 01, 2023" data-amount="$49.00" class="text-slate-400 hover:text-primary transition-colors">
 <span class="material-symbols-outlined">receipt_long</span>
 </button>
 </td>
@@ -242,7 +236,7 @@
                                             </span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-right">
-<button onclick="openInvoiceModal(this)" data-invoice="#INV-8812" data-date="Aug 01, 2023" data-amount="$49.00" class="text-slate-400 hover:text-primary transition-colors">
+<button onclick="openFaturaModal(this)" data-invoice="#INV-8812" data-date="Aug 01, 2023" data-amount="$49.00" class="text-slate-400 hover:text-primary transition-colors">
 <span class="material-symbols-outlined">receipt_long</span>
 </button>
 </td>
@@ -259,7 +253,7 @@
                                             </span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-right">
-<button onclick="openInvoiceModal(this)" data-invoice="#INV-7734" data-date="Jul 01, 2023" data-amount="$124.50" class="text-slate-400 hover:text-primary transition-colors">
+<button onclick="openFaturaModal(this)" data-invoice="#INV-7734" data-date="Jul 01, 2023" data-amount="$124.50" class="text-slate-400 hover:text-primary transition-colors">
 <span class="material-symbols-outlined">receipt_long</span>
 </button>
 </td>
@@ -276,7 +270,7 @@
                                             </span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-right">
-<button onclick="openInvoiceModal(this)" data-invoice="#INV-6211" data-date="Jun 01, 2023" data-amount="$49.00" class="text-slate-400 hover:text-primary transition-colors">
+<button onclick="openFaturaModal(this)" data-invoice="#INV-6211" data-date="Jun 01, 2023" data-amount="$49.00" class="text-slate-400 hover:text-primary transition-colors">
 <span class="material-symbols-outlined">receipt_long</span>
 </button>
 </td>
@@ -285,7 +279,7 @@
 </table>
 </div>
 <div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-<p class="text-sm text-slate-500">Showing 1 to 4 of 24 invoices</p>
+<p class="text-sm text-slate-500">Mostrando 1 a 4 de 24 faturas</p>
 <div class="flex items-center gap-2">
 <button class="p-1 border border-slate-200 dark:border-slate-700 rounded bg-white dark:bg-slate-900 text-slate-400 disabled:opacity-50">
 <span class="material-symbols-outlined text-base">chevron_left</span>
@@ -304,31 +298,31 @@
 </main>
 <div id="invoice-modal" class="fixed inset-0 hidden items-center justify-center bg-black/50 z-50 p-4">
   <div class="w-full max-w-md rounded-xl bg-white dark:bg-slate-900 p-6 border border-slate-200 dark:border-slate-700">
-    <h3 class="text-lg font-bold mb-4">Invoice Details</h3>
-    <p class="text-sm text-slate-600 mb-2">Invoice: <span id="inv-id" class="font-semibold text-slate-900 dark:text-white"></span></p>
+    <h3 class="text-lg font-bold mb-4">Fatura Detalhes</h3>
+    <p class="text-sm text-slate-600 mb-2">Fatura: <span id="inv-id" class="font-semibold text-slate-900 dark:text-white"></span></p>
     <p class="text-sm text-slate-600 mb-2">Date: <span id="inv-date" class="font-semibold text-slate-900 dark:text-white"></span></p>
-    <p class="text-sm text-slate-600 mb-6">Amount: <span id="inv-amount" class="font-semibold text-slate-900 dark:text-white"></span></p>
+    <p class="text-sm text-slate-600 mb-6">Valor: <span id="inv-amount" class="font-semibold text-slate-900 dark:text-white"></span></p>
     <div class="flex gap-3 justify-end">
-      <a id="inv-download" download="invoice.txt" href="data:text/plain,Select%20an%20invoice%20to%20download" class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white">Download</a>
-      <button onclick="closeInvoiceModal()" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold">Close</button>
+      <a id="inv-download" download="invoice.txt" href="data:text/plain,Select%20an%20invoice%20to%20download" class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white">Baixar</a>
+      <button onclick="closeFaturaModal()" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold">Close</button>
     </div>
   </div>
 </div>
 <script>
-function openInvoiceModal(btn){
+function openFaturaModal(btn){
   const id=btn.getAttribute('data-invoice')||'';
   const date=btn.getAttribute('data-date')||'';
   const amount=btn.getAttribute('data-amount')||'';
   document.getElementById('inv-id').textContent=id;
   document.getElementById('inv-date').textContent=date;
   document.getElementById('inv-amount').textContent=amount;
-  const txt=`DEVHUB Invoice ${id}\nDate: ${date}\nAmount: ${amount}`;
+  const txt=`DEVHUB Fatura ${id}\nDate: ${date}\nValor: ${amount}`;
   document.getElementById('inv-download').setAttribute('href',`data:text/plain,${encodeURIComponent(txt)}`);
   const modal=document.getElementById('invoice-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
 }
-function closeInvoiceModal(){
+function closeFaturaModal(){
   const modal=document.getElementById('invoice-modal');
   modal.classList.add('hidden');
   modal.classList.remove('flex');

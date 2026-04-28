@@ -1,83 +1,103 @@
-# DevHub477 Web (Next.js 14 + App Router + JavaScript)
+# DEVHUB477
 
-Projeto preparado para deploy na Vercel com App Router, APIs server-side e telas legadas preservadas.
-
-## ✅ Status atual
-
-- Base migrada para **JavaScript/JSX** (sem TypeScript no código-fonte).
-- Rotas do App Router organizadas em `app/`.
-- APIs de autenticação, marketplace e checkout em `app/api/*`.
-- Contexto de carrinho client-side com persistência em localStorage.
-- HTMLs legados preservados em `pages/`.
-- Exemplo de marketplace em HTML/CSS/JS puro em `public/marketplace-refactor/`.
+Projeto estático do marketplace DEVHUB, organizado em páginas HTML e estilos CSS.
 
 ## Estrutura
 
-```bash
-.
-├── app/                             # App Router (páginas e APIs)
-├── components/                      # Componentes reutilizáveis
-├── contexts/                        # Context API (carrinho)
-├── lib/                             # Utilitários (auth, prisma, stripe, etc.)
-├── pages/                           # HTMLs originais preservados
-├── prisma/                          # Schema e client Prisma
-├── public/assets/                   # Assets estáticos
-├── public/marketplace-refactor/      # Exemplo HTML/CSS/JS puro
-├── package.json
-├── vercel.json
-└── README.md
+- `pages/`: todas as páginas HTML do projeto.
+- `css/`: todos os arquivos CSS usados pelas páginas.
+- `pages/software-marketplace-dashboard.html`: página principal do marketplace.
+- `pages/index.html`: redireciona para a página principal.
+- `pages/produto.html`: página genérica de detalhes do produto.
+
+## Página principal
+
+A vitrine principal fica em:
+
+```text
+pages/software-marketplace-dashboard.html
 ```
 
-## Scripts
+Ela não possui produtos modelo fixos. A lista é carregada por JavaScript a partir do endpoint:
 
-```bash
-npm run dev          # Desenvolvimento
-npm run build        # Build de produção
-npm run start        # Start em produção
-npm run lint         # Lint do Next
-npm run check:no-ts  # Verifica se restou arquivo TypeScript
+```text
+/api/products
 ```
 
-> `postinstall` executa `prisma generate` automaticamente.
+Se o endpoint ainda não existir ou não retornar produtos, a página mostra o estado vazio informando que está pronta para receber dados do banco.
 
-## Como rodar localmente
+## Formato esperado da API
 
-```bash
-npm install
-npm run dev
+O endpoint pode retornar um array diretamente:
+
+```json
+[
+  {
+    "id": 1,
+    "slug": "meu-produto",
+    "nome": "Meu Produto",
+    "descricao": "Descrição do produto",
+    "fornecedor": "Minha Empresa",
+    "preco": 99.9,
+    "avaliacao": 4.8,
+    "categoria": "SaaS e Nuvem",
+    "plataforma": "Web",
+    "criadoEm": "2026-04-28"
+  }
+]
 ```
 
-Acesse: `http://localhost:3000`
+Ou dentro de uma chave:
 
-## Deploy na Vercel
+```json
+{
+  "produtos": []
+}
+```
 
-### 1) Requisitos
+Também são aceitos nomes em inglês, como `name`, `description`, `vendor`, `price`, `rating`, `category`, `platform` e `createdAt`.
 
-- Node **20.x** (definido em `package.json -> engines`).
-- Banco de dados configurado para Prisma (URL válida em `DATABASE_URL`).
+## Filtros
 
-### 2) Variáveis de ambiente recomendadas
+Na página principal, os filtros funcionam sobre os produtos carregados:
 
-- `DATABASE_URL`
-- `NEXTAUTH_SECRET`
-- `NEXTAUTH_URL`
-- `STRIPE_SECRET_KEY`
-- `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME`
-- `NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET`
-- `RESEND_API_KEY` (opcional para e-mail de confirmação)
-- `ORDER_FROM_EMAIL` (opcional para e-mail de confirmação)
+- busca por nome, fornecedor e descrição;
+- categoria;
+- plataforma;
+- faixa máxima de preço;
+- nota mínima;
+- ordenação por mais populares, mais recentes e mais bem avaliados.
 
-### 3) Passos
+Para categoria e plataforma, os valores são normalizados automaticamente. Exemplos aceitos:
 
-1. Faça push para o GitHub.
-2. Importe o repositório na Vercel.
-3. Framework detectado automaticamente: **Next.js**.
-4. Configure as variáveis de ambiente no painel da Vercel.
-5. Deploy.
+- `SaaS e Nuvem` vira `saas-nuvem`;
+- `Ferramentas Dev` vira `ferramentas-dev`;
+- `Segurança` vira `seguranca`;
+- `Análises` vira `analises`;
+- `Web`, `Desktop`, `Mobile` e `CLI` funcionam diretamente.
 
-## Checklist de migração para JavaScript
+## Detalhes do produto
 
-- [x] Sem `.ts`, `.tsx` ou `.d.ts` no projeto de runtime.
-- [x] Dependências TypeScript removidas.
-- [x] App Router e APIs em `.js/.jsx`.
-- [x] Projeto pronto para build/deploy na Vercel com Node 20.x.
+A página:
+
+```text
+pages/produto.html
+```
+
+espera receber um identificador na URL:
+
+```text
+pages/produto.html?id=meu-produto
+```
+
+Ela tenta buscar:
+
+```text
+/api/products/:id
+```
+
+Quando você conectar ao banco, basta expor esse endpoint para preencher os dados do produto.
+
+## Observações
+
+As páginas foram traduzidas para português do Brasil e os links internos foram ajustados para navegação local entre arquivos `.html`.

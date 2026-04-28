@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
-<html class="light" lang="en"><head>
+<html class="light" lang="pt-BR"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>DEVHUB - Create Account</title>
+<title>DEVHUB - Criar conta</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -26,25 +26,19 @@
           },
         }
     </script>
-<style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
+<link rel="stylesheet" href="../css/create-account-comprehensive.css"/>
+
 </head>
 <body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display">
 <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 md:px-10 py-4 sticky top-0 z-50">
 <div class="flex items-center gap-4 text-slate-900 dark:text-slate-100">
 <div class="size-8 flex items-center justify-center">
-<img alt="DEVHUB logo" class="size-8 rounded-lg object-cover" src="/assets/devhublogo.jpeg"/>
+<img alt="DEVHUB logo" class="size-8 rounded-lg object-cover" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236b26d9'/%3E%3Cpath d='M18 20h13c8 0 15 5 15 12s-7 12-15 12H18V20zm8 7v10h5c4 0 7-2 7-5s-3-5-7-5h-5z' fill='white'/%3E%3C/svg%3E"/>
 </div>
 <h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-[-0.015em]">DEVHUB</h2>
 </div>
 <div class="flex items-center gap-4">
-<span class="text-sm text-slate-600 dark:text-slate-400 hidden sm:inline">Already have an account?</span>
+<span class="text-sm text-slate-600 dark:text-slate-400 hidden sm:inline">Já tem uma conta?</span>
 <button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
 <span class="truncate">Log In</span>
 </button>
@@ -53,8 +47,8 @@
 <main class="flex-1 flex items-center justify-center p-4 md:p-8">
 <div class="w-full max-w-[560px] bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-primary/5 p-6 md:p-10">
 <div class="mb-8">
-<h1 class="text-slate-900 dark:text-slate-100 text-3xl font-black leading-tight tracking-[-0.033em]">Create Account</h1>
-<p class="text-slate-500 dark:text-slate-400 text-base mt-2">Join the largest developer ecosystem today</p>
+<h1 class="text-slate-900 dark:text-slate-100 text-3xl font-black leading-tight tracking-[-0.033em]">Criar conta</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base mt-2">Entre hoje no maior ecossistema para desenvolvedores</p>
 </div>
 <div class="mb-8">
 <p class="text-slate-900 dark:text-slate-100 text-sm font-bold leading-tight tracking-[-0.015em] mb-4">Select User Type</p>
@@ -62,32 +56,32 @@
 <label class="group relative flex cursor-pointer flex-col items-center justify-center rounded-lg py-3 px-2 text-center transition-all has-[:checked]:bg-white dark:has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm has-[:checked]:text-primary text-slate-500 dark:text-slate-400">
 <input class="sr-only" name="user_type" type="radio" value="company"/>
 <span class="material-symbols-outlined text-2xl mb-1">domain</span>
-<span class="text-xs font-semibold uppercase tracking-wider">Company</span>
+<span class="text-xs font-semibold uppercase tracking-wider">Empresa</span>
 </label>
 <label class="group relative flex cursor-pointer flex-col items-center justify-center rounded-lg py-3 px-2 text-center transition-all has-[:checked]:bg-white dark:has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm has-[:checked]:text-primary text-slate-500 dark:text-slate-400">
 <input checked="" class="sr-only" name="user_type" type="radio" value="regular"/>
 <span class="material-symbols-outlined text-2xl mb-1">person</span>
-<span class="text-xs font-semibold uppercase tracking-wider">Regular</span>
+<span class="text-xs font-semibold uppercase tracking-wider">Comum</span>
 </label>
 <label class="group relative flex cursor-pointer flex-col items-center justify-center rounded-lg py-3 px-2 text-center transition-all has-[:checked]:bg-white dark:has-[:checked]:bg-slate-700 has-[:checked]:shadow-sm has-[:checked]:text-primary text-slate-500 dark:text-slate-400">
 <input class="sr-only" name="user_type" type="radio" value="supplier"/>
 <span class="material-symbols-outlined text-2xl mb-1">inventory_2</span>
-<span class="text-xs font-semibold uppercase tracking-wider">Supplier</span>
+<span class="text-xs font-semibold uppercase tracking-wider">Fornecedor</span>
 </label>
 </div>
 </div>
 <form class="space-y-5">
-<!-- Dynamic Content: Regular User View (Default) -->
+<!-- Dynamic Content: Comum User View (Default) -->
 <div class="space-y-5" id="regular-fields">
 <div class="flex flex-col gap-2">
-<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Full Name</label>
+<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Nome completo</label>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">badge</span>
 <input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="John Doe" type="text"/>
 </div>
 </div>
 <div class="flex flex-col gap-2">
-<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Email Address</label>
+<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">E-mail Address</label>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">mail</span>
 <input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="john@example.com" type="email"/>
@@ -95,14 +89,14 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 <div class="flex flex-col gap-2">
-<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Password</label>
+<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Senha</label>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">lock</span>
 <input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="••••••••" type="password"/>
 </div>
 </div>
 <div class="flex flex-col gap-2">
-<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Confirm Password</label>
+<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Confirm Senha</label>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">key_visualizer</span>
 <input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="••••••••" type="password"/>
@@ -116,18 +110,18 @@
 </div>
 <div class="text-sm leading-6">
 <label class="font-medium text-slate-700 dark:text-slate-300" for="terms">
-                            I agree to the <a class="text-primary hover:underline" href="#">Terms of Service</a> and <a class="text-primary hover:underline" href="#">Privacy Policy</a>.
+                            Eu concordo com os <a class="text-primary hover:underline" href="#">Termos de serviço</a> e <a class="text-primary hover:underline" href="#">Política de privacidade</a>.
                         </label>
 </div>
 </div>
 <button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-lg transition-all shadow-lg shadow-primary/25 flex items-center justify-center gap-2" type="submit">
-<span>Create Account</span>
+<span>Criar conta</span>
 <span class="material-symbols-outlined text-lg">arrow_forward</span>
 </button>
-<a class="w-full inline-flex items-center justify-center py-3 px-4 border border-primary/30 text-primary font-bold rounded-lg hover:bg-primary/5 transition-colors" href="/marketplace">Visitante</a>
+<a class="w-full inline-flex items-center justify-center py-3 px-4 border border-primary/30 text-primary font-bold rounded-lg hover:bg-primary/5 transition-colors" href="./software-marketplace-dashboard.html">Visitante</a>
 </form>
 <div class="mt-8 pt-6 border-t border-primary/10 flex flex-col items-center gap-4">
-<p class="text-sm text-slate-500">Or sign up with</p>
+<p class="text-sm text-slate-500">Ou cadastre-se com</p>
 <div class="flex gap-4 w-full">
 <button class="flex-1 flex items-center justify-center gap-2 py-2.5 px-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 transition-colors">
 <svg aria-hidden="true" class="w-5 h-5" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path></svg>
@@ -142,6 +136,6 @@
 </div>
 </main>
 <footer class="p-8 text-center text-slate-500 dark:text-slate-400 text-sm">
-<p>© 2026 DEVHUB Ecosystem. All rights reserved.</p>
+<p>© 2026 DEVHUB Ecosystem. Todos os direitos reservados.</p>
 </footer>
 </body></html>

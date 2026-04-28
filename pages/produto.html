@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DEVHUB | Produto</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="./software-marketplace-dashboard.html" style="text-decoration: none; color: inherit;">DEVHUB</a>
+      <div class="row">
+        <a class="btn btn-secondary" href="./software-marketplace-dashboard.html">Mercado</a>
+        <a class="btn btn-primary" href="./checkout-payment.html">Pagamento</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="section-title">Detalhes do Produto</h1>
+    <section id="produtoDetalhe" class="card" data-products-endpoint="/api/products">
+      <p class="message info">Carregando dados do produto...</p>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const container = document.querySelector('#produtoDetalhe');
+      const params = new URLBuscarParams(window.location.search);
+      const id = params.get('id') || params.get('slug');
+      const endpoint = container.dataset.productsEndpoint;
+
+      function renderEmpty() {
+        container.innerHTML = `
+          <h2>Produto nao carregado</h2>
+          <p>Esta pagina esta pronta para receber os dados reais do banco.</p>
+          <p class="small">Passe um <strong>id</strong> ou <strong>slug</strong> na URL e exponha o endpoint <code>/api/products/:id</code> para preencher automaticamente.</p>
+          <a class="btn btn-primary" href="./software-marketplace-dashboard.html">Voltar ao marketplace</a>
+        `;
+      }
+
+      function renderProduto(product) {
+        const name = product.name || product.nome || 'Produto sem nome';
+        const description = product.description || product.descricao || 'Sem descricao cadastrada.';
+        const vendor = product.vendor || product.fornecedor || product.company || 'Fornecedor nao informado';
+        const price = product.price || product.preco || 'Sob consulta';
+        container.innerHTML = `
+          <h2>${name}</h2>
+          <p>${description}</p>
+          <p><strong>Fornecedor:</strong> ${vendor}</p>
+          <p><strong>Preco:</strong> ${price}</p>
+          <div class="row" style="justify-content: flex-start; margin-top: 1rem;">
+            <a class="btn btn-primary" href="./checkout-payment.html">Continuar para checkout</a>
+            <a class="btn btn-secondary" href="./software-marketplace-dashboard.html">Voltar</a>
+          </div>
+        `;
+      }
+
+      async function loadProduto() {
+        if (!id || !endpoint) return renderEmpty();
+        try {
+          const response = await fetch(`${endpoint}/${encodeURIComponent(id)}`, { headers: { Accept: 'application/json' } });
+          if (!response.ok) throw new Error('Produto nao encontrado');
+          renderProduto(await response.json());
+        } catch (error) {
+          renderEmpty();
+        }
+      }
+
+      loadProduto();
+    })();
+  </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
-<html lang="en"><head>
+<html lang="pt-BR"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -25,7 +25,8 @@
           },
         }
     </script>
-<title>Order Confirmed | DEVHUB</title>
+<title>Pedido confirmado | DEVHUB</title>
+<link rel="stylesheet" href="../css/order-confirmation.css"/>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
 <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
@@ -33,15 +34,15 @@
 <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 py-4 bg-white dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
 <div class="flex items-center gap-4 text-primary">
 <div class="size-8 flex items-center justify-center">
-<img alt="DEVHUB logo" class="size-8 rounded-lg object-cover" src="/assets/devhublogo.jpeg"/>
+<img alt="DEVHUB logo" class="size-8 rounded-lg object-cover" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236b26d9'/%3E%3Cpath d='M18 20h13c8 0 15 5 15 12s-7 12-15 12H18V20zm8 7v10h5c4 0 7-2 7-5s-3-5-7-5h-5z' fill='white'/%3E%3C/svg%3E"/>
 </div>
 <h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">DEVHUB</h2>
 </div>
 <div class="flex gap-3">
-<a href="/cart" class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+<a href="./checkout-payment.html" class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
 <span class="material-symbols-outlined">shopping_cart</span>
 </a>
-<a href="/settings/profile" class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+<a href="./profile-settings.html" class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
 <span class="material-symbols-outlined">person</span>
 </a>
 </div>
@@ -52,9 +53,9 @@
 <div class="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 text-primary shadow-sm">
 <span class="material-symbols-outlined !text-5xl">check_circle</span>
 </div>
-<h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-4xl font-bold leading-tight mb-3">Order Confirmed!</h1>
+<h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-4xl font-bold leading-tight mb-3">Pedido confirmado!</h1>
 <p class="text-slate-600 dark:text-slate-400 text-lg font-normal max-w-md mx-auto">
-                            Thank you for your purchase. Your subscription is now active and ready to use.
+                            Obrigado pela compra. Sua assinatura está ativa e pronta para uso.
                         </p>
 </div>
 <div class="p-1 @container mb-8">
@@ -63,26 +64,26 @@
 <div class="flex w-full grow flex-col items-start justify-center gap-2 p-6 text-left">
 <div class="flex justify-between w-full items-start">
 <div>
-<p class="text-primary text-xs font-bold uppercase tracking-widest mb-1">Purchase Summary</p>
-<p class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight">CloudScale Pro</p>
+<p class="text-primary text-xs font-bold uppercase tracking-widest mb-1">Resumo da compra</p>
+<p class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight">Produto selecionado</p>
 </div>
-<span class="bg-primary/10 text-primary text-xs font-bold px-2.5 py-1 rounded-full">ACTIVE</span>
+<span class="bg-primary/10 text-primary text-xs font-bold px-2.5 py-1 rounded-full">ATIVO</span>
 </div>
 <div class="w-full border-t border-slate-100 dark:border-slate-800 my-2"></div>
 <div class="flex flex-col gap-1 w-full">
 <div class="flex justify-between text-sm">
-<span class="text-slate-500 dark:text-slate-400">Order ID:</span>
+<span class="text-slate-500 dark:text-slate-400">ID do pedido:</span>
 <span class="text-slate-900 dark:text-slate-100 font-medium">#DH-88291</span>
 </div>
 <div class="flex justify-between text-sm">
-<span class="text-slate-500 dark:text-slate-400">Subscription:</span>
-<span class="text-slate-900 dark:text-slate-100 font-medium">Annual Plan ($299/yr)</span>
+<span class="text-slate-500 dark:text-slate-400">Assinatura:</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">Plano anual (R$ 299/ano)</span>
 </div>
 </div>
 <div class="mt-4 flex w-full">
-<a download="devhub-receipt-DH-88291.txt" href="data:text/plain,DEVHUB%20Receipt%20%23DH-88291%0APlan%3A%20CloudScale%20Pro%20Annual%0AAmount%3A%20%24299.00%0AStatus%3A%20PAID" class="flex-1 flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<a download="devhub-receipt-DH-88291.txt" href="data:text/plain,DEVHUB%20Receipt%20%23DH-88291%0APlano%3A%20Produto%20selecionado%0AValor%3A%20%24299.00%0AStatus%3A%20PAID" class="flex-1 flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
 <span class="material-symbols-outlined text-lg">receipt_long</span>
-<span>Download Receipt</span>
+<span>Baixar recibo</span>
 </a>
 </div>
 </div>
@@ -91,36 +92,36 @@
 <div class="bg-primary/5 rounded-xl p-8 mb-10 text-left border border-primary/10">
 <h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold mb-4 flex items-center gap-2">
 <span class="material-symbols-outlined text-primary">info</span>
-                            Next Steps
+                            Próximos passos
                         </h3>
 <ul class="space-y-4">
 <li class="flex gap-3">
 <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-white text-xs font-bold">1</div>
 <div>
-<p class="font-semibold text-slate-900 dark:text-slate-100">Check your email</p>
-<p class="text-sm text-slate-600 dark:text-slate-400">We've sent your license key and setup guide to your inbox.</p>
+<p class="font-semibold text-slate-900 dark:text-slate-100">Confira seu e-mail</p>
+<p class="text-sm text-slate-600 dark:text-slate-400">Enviamos a chave de licença e o guia de configuração para seu e-mail.</p>
 </div>
 </li>
 <li class="flex gap-3">
 <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-white text-xs font-bold">2</div>
 <div>
-<p class="font-semibold text-slate-900 dark:text-slate-100">Access Dashboard</p>
-<p class="text-sm text-slate-600 dark:text-slate-400">Head over to your developer portal to start deploying your instances.</p>
+<p class="font-semibold text-slate-900 dark:text-slate-100">Acesse o painel</p>
+<p class="text-sm text-slate-600 dark:text-slate-400">Acesse seu painel para começar a configurar seus serviços.</p>
 </div>
 </li>
 </ul>
 </div>
 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-<a href="/dashboard" class="flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-base font-bold shadow-lg shadow-primary/20 hover:brightness-110 transition-all">
-                            Go to Dashboard
+<a href="./user-dashboard.html" class="flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-base font-bold shadow-lg shadow-primary/20 hover:brightness-110 transition-all">
+                            Ir para o painel
                         </a>
-<a href="/marketplace" class="flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 border-2 border-primary/20 text-primary text-base font-bold hover:bg-primary/5 transition-all">
-                            Continue Shopping
+<a href="./software-marketplace-dashboard.html" class="flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 border-2 border-primary/20 text-primary text-base font-bold hover:bg-primary/5 transition-all">
+                            Continuar comprando
                         </a>
 </div>
 <footer class="mt-16 text-slate-500 dark:text-slate-500 text-sm">
-<p>Need help? <a class="text-primary font-medium hover:underline" href="/support">Contact our support team</a></p>
-<p class="mt-2">© 2026 DEVHUB Marketplace. All rights reserved.</p>
+<p>Precisa de ajuda? <a class="text-primary font-medium hover:underline" href="#">Fale com nossa equipe de suporte</a></p>
+<p class="mt-2">© 2026 DEVHUB Mercado. Todos os direitos reservados.</p>
 </footer>
 </div>
 </main>

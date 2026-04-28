@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://devhub477.vercel.app/sitemap.xml

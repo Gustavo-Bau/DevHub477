@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="en"><head>
+﻿<!DOCTYPE html><html lang="pt-BR"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>DEVHUB - User Profile Settings</title>
+<title>DEVHUB - User Perfil Configurações</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
@@ -24,12 +24,8 @@
             },
         }
     </script>
-<style>
-        body { font-family: 'Inter', sans-serif; }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
+<link rel="stylesheet" href="../css/profile-settings.css"/>
+
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
 <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
@@ -38,7 +34,7 @@
 <div class="flex items-center gap-8">
 <div class="flex items-center gap-3 text-primary">
 <div class="size-8 flex items-center justify-center">
-<img alt="DEVHUB logo" class="size-8 rounded-lg object-cover" src="/assets/devhublogo.jpeg"/>
+<img alt="DEVHUB logo" class="size-8 rounded-lg object-cover" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236b26d9'/%3E%3Cpath d='M18 20h13c8 0 15 5 15 12s-7 12-15 12H18V20zm8 7v10h5c4 0 7-2 7-5s-3-5-7-5h-5z' fill='white'/%3E%3C/svg%3E"/>
 </div>
 <h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight" style="">DEVHUB</h2>
 </div>
@@ -47,7 +43,7 @@
 <div class="text-slate-500 flex border-none bg-slate-100 dark:bg-slate-800 items-center justify-center pl-4 rounded-l-lg">
 <span class="material-symbols-outlined text-lg" style="">search</span>
 </div>
-<input class="form-input flex w-full min-w-0 flex-1 border-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-0 h-full placeholder:text-slate-500 px-4 rounded-r-lg text-sm" placeholder="Search settings..." value="">
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-0 h-full placeholder:text-slate-500 px-4 rounded-r-lg text-sm" placeholder="Buscar configurações..." value="">
 </div>
 </label>
 </div>
@@ -67,32 +63,32 @@
 <!-- Sidebar Navigation -->
 <aside class="w-full md:w-64 flex flex-col gap-2 shrink-0">
 <div class="mb-4">
-<h1 class="text-slate-900 dark:text-slate-100 text-2xl font-black tracking-tight" style="">Settings</h1>
-<p class="text-slate-500 text-sm" style="">Manage your workspace</p>
+<h1 class="text-slate-900 dark:text-slate-100 text-2xl font-black tracking-tight" style="">Configurações</h1>
+<p class="text-slate-500 text-sm" style="">Gerenciar your workspace</p>
 </div>
 <nav class="flex flex-col gap-1">
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-semibold shadow-sm shadow-primary/20" href="/settings/profile" style="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-semibold shadow-sm shadow-primary/20" href="./profile-settings.html" style="">
 <span class="material-symbols-outlined text-[22px]" style="">person</span>
 <span class="text-sm" style="">Personal Info</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors" href="/settings/security" style="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors" href="./security-password.html" style="">
 <span class="material-symbols-outlined text-[22px]" style="">lock</span>
-<span class="text-sm" style="">Security &amp; Password</span>
+<span class="text-sm" style="">Segurança &amp; Senha</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors" href="/settings/billing" style="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors" href="./billing-invoices.html" style="">
 <span class="material-symbols-outlined text-[22px]" style="">business_center</span>
-<span class="text-sm" style="">Billing &amp; Payments</span>
+<span class="text-sm" style="">Cobrança &amp; Pagamentos</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors" href="/settings/notifications" style="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors" href="./notification-preferences.html" style="">
 <span class="material-symbols-outlined text-[22px]" style="">notifications</span>
-<span class="text-sm" style="">Notification Preferences</span>
+<span class="text-sm" style="">Preferências de notificação</span>
 </a>
 </nav>
 <div class="mt-8 p-4 bg-primary/5 rounded-xl border border-primary/10">
-<p class="text-xs font-bold text-primary uppercase tracking-wider mb-2" style="">Current Plan</p>
+<p class="text-xs font-bold text-primary uppercase tracking-wider mb-2" style="">Plano atual</p>
 <div class="flex items-center justify-between">
 <span class="text-sm font-bold text-slate-900 dark:text-slate-100" style="">Enterprise Elite</span>
-<span class="px-2 py-0.5 rounded bg-primary/20 text-primary text-[10px] font-black" style="">ACTIVE</span>
+<span class="px-2 py-0.5 rounded bg-primary/20 text-primary text-[10px] font-black" style="">ATIVO</span>
 </div>
 </div>
 </aside>
@@ -103,11 +99,11 @@
 <div class="p-6 md:p-8 border-b border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
 <div>
 <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100" style="">Personal Information</h2>
-<p class="text-slate-500 text-sm mt-1" style="">Update your photo and personal details here.</p>
+<p class="text-slate-500 text-sm mt-1" style="">Atualize sua foto e seus dados pessoais aqui.</p>
 </div>
 <div class="flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-full border border-primary/20">
 <span class="size-2 rounded-full bg-primary"></span>
-<span class="text-xs font-bold text-primary" style="">Company Account</span>
+<span class="text-xs font-bold text-primary" style="">Empresa Conta</span>
 </div>
 </div>
 <!-- Form Content -->
@@ -126,8 +122,8 @@
 </button>
 </div>
 <div class="flex flex-col gap-2 text-center md:text-left">
-<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100" style="">Profile Picture</h3>
-<p class="text-slate-500 text-sm" style="">JPG, GIF or PNG. Recommended size 400x400px. Max size 800K.</p>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100" style="">Perfil Picture</h3>
+<p class="text-slate-500 text-sm" style="">JPG, GIF or PNG. Recomendado size 400x400px. Max size 800K.</p>
 <div class="flex gap-3 justify-center md:justify-start mt-1">
 <button class="px-4 py-2 text-sm font-bold bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" style="">Upload New</button>
 <button class="px-4 py-2 text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors" style="">Remove</button>
@@ -137,15 +133,15 @@
 <!-- Input Fields -->
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="flex flex-col gap-2">
-<label class="text-sm font-bold text-slate-700 dark:text-slate-300" style="">Full Name</label>
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300" style="">Nome completo</label>
 <input class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-11" type="text" value="Alex Richardson">
 </div>
 <div class="flex flex-col gap-2">
-<label class="text-sm font-bold text-slate-700 dark:text-slate-300" style="">Email Address</label>
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300" style="">E-mail Address</label>
 <input class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-11" type="email" value="alex.richardson@devhub.com">
 </div>
 <div class="flex flex-col gap-2">
-<label class="text-sm font-bold text-slate-700 dark:text-slate-300" style="">Phone Number</label>
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300" style="">Telefone</label>
 <input class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-11" type="tel" value="+1 (555) 123-4567">
 </div>
 <div class="flex flex-col gap-2">
@@ -155,23 +151,23 @@
 </div>
 <div class="flex flex-col gap-2">
 <label class="text-sm font-bold text-slate-700 dark:text-slate-300" style="">Professional Bio</label>
-<textarea class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary" rows="4">Focused on building scalable infrastructure and modern web applications. Avid open-source contributor and mentor.</textarea>
+<textarea class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary" rows="4">Focused on building scalable infrastructure e modern web applications. Avid open-source contributor e mentor.</textarea>
 </div>
 </div>
 </div>
 <!-- Actions Footer -->
 <div class="p-6 md:p-8 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-800 flex items-center justify-end gap-4">
-<a class="text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors" href="/dashboard" style="">Cancel</a>
-<button onclick="showProfileToast()" class="px-8 py-2.5 bg-primary text-white font-bold rounded-lg shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all active:scale-95" style="">
-                            Save Changes
+<a class="text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors" href="./user-dashboard.html" style="">Cancelar</a>
+<button onclick="showPerfilToast()" class="px-8 py-2.5 bg-primary text-white font-bold rounded-lg shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all active:scale-95" style="">
+                            Salvar alterações
                         </button>
 </div>
 </div>
 <!-- Danger Zone Section -->
 <div class="mt-8 bg-red-50/50 dark:bg-red-900/10 rounded-xl border border-red-100 dark:border-red-900/30 p-6 flex flex-wrap items-center justify-between gap-4">
 <div>
-<h4 class="text-red-700 dark:text-red-400 font-bold" style="">Deactivate Account</h4>
-<p class="text-red-600/70 dark:text-red-400/60 text-sm" style="">Once you deactivate your account, there is no going back. Please be certain.</p>
+<h4 class="text-red-700 dark:text-red-400 font-bold" style="">Deactivate Conta</h4>
+<p class="text-red-600/70 dark:text-red-400/60 text-sm" style="">Ao desativar sua conta, não será possível voltar. Confirme apenas se tiver certeza.</p>
 </div>
 <button class="px-4 py-2 bg-white dark:bg-slate-900 text-red-600 border border-red-200 dark:border-red-900 font-bold rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors" style="">
                         Deactivate
@@ -179,10 +175,10 @@
 </div>
 </section>
 </main>
-<div id="profile-save-toast" class="fixed bottom-6 right-6 hidden rounded-lg bg-emerald-600 text-white px-4 py-3 text-sm font-semibold shadow-lg z-50">Profile updated successfully.</div>
-<script>function showProfileToast(){const el=document.getElementById('profile-save-toast');if(!el)return;el.classList.remove('hidden');setTimeout(()=>el.classList.add('hidden'),2200);}</script>
+<div id="profile-save-toast" class="fixed bottom-6 right-6 hidden rounded-lg bg-emerald-600 text-white px-4 py-3 text-sm font-semibold shadow-lg z-50">Perfil updated successfully.</div>
+<script>function showPerfilToast(){const el=document.getElementById('profile-save-toast');if(!el)return;el.classList.remove('hidden');setTimeout(()=>el.classList.add('hidden'),2200);}</script>
 <footer class="p-10 text-center text-slate-400 dark:text-slate-600 text-sm">
-<p class="" style="">© 2026 DEVHUB Ecosystem. All rights reserved.</p>
+<p class="" style="">© 2026 DEVHUB Ecosystem. Todos os direitos reservados.</p>
 </footer>
 </div>
 </body></html>
