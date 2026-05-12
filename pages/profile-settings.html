@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html><html lang="pt-BR"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>DEVHUB - User Perfil Configurações</title>
+<title>DEVHUB - Configurações de perfil</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
@@ -64,12 +64,12 @@
 <aside class="w-full md:w-64 flex flex-col gap-2 shrink-0">
 <div class="mb-4">
 <h1 class="text-slate-900 dark:text-slate-100 text-2xl font-black tracking-tight" style="">Configurações</h1>
-<p class="text-slate-500 text-sm" style="">Gerenciar your workspace</p>
+<p class="text-slate-500 text-sm" style="">Gerencie seu workspace</p>
 </div>
 <nav class="flex flex-col gap-1">
 <a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-semibold shadow-sm shadow-primary/20" href="./profile-settings.html" style="">
 <span class="material-symbols-outlined text-[22px]" style="">person</span>
-<span class="text-sm" style="">Personal Info</span>
+<span class="text-sm" style="">Informações pessoais</span>
 </a>
 <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors" href="./security-password.html" style="">
 <span class="material-symbols-outlined text-[22px]" style="">lock</span>
@@ -98,7 +98,7 @@
 <!-- Header -->
 <div class="p-6 md:p-8 border-b border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
 <div>
-<h2 class="text-xl font-bold text-slate-900 dark:text-slate-100" style="">Personal Information</h2>
+<h2 class="text-xl font-bold text-slate-900 dark:text-slate-100" style="">Informações pessoais</h2>
 <p class="text-slate-500 text-sm mt-1" style="">Atualize sua foto e seus dados pessoais aqui.</p>
 </div>
 <div class="flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-full border border-primary/20">
@@ -122,11 +122,11 @@
 </button>
 </div>
 <div class="flex flex-col gap-2 text-center md:text-left">
-<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100" style="">Perfil Picture</h3>
-<p class="text-slate-500 text-sm" style="">JPG, GIF or PNG. Recomendado size 400x400px. Max size 800K.</p>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100" style="">Foto de perfil</h3>
+<p class="text-slate-500 text-sm" style="">JPG, GIF ou PNG. Recomendado 400x400px. Máximo 800KB.</p>
 <div class="flex gap-3 justify-center md:justify-start mt-1">
-<button class="px-4 py-2 text-sm font-bold bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" style="">Upload New</button>
-<button class="px-4 py-2 text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors" style="">Remove</button>
+<button class="px-4 py-2 text-sm font-bold bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" style="">Enviar nova foto</button>
+<button class="px-4 py-2 text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors" style="">Remover</button>
 </div>
 </div>
 </div>
@@ -137,7 +137,7 @@
 <input class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-11" type="text" value="Alex Richardson">
 </div>
 <div class="flex flex-col gap-2">
-<label class="text-sm font-bold text-slate-700 dark:text-slate-300" style="">E-mail Address</label>
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300" style="">E-mail</label>
 <input class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-11" type="email" value="alex.richardson@devhub.com">
 </div>
 <div class="flex flex-col gap-2">
@@ -145,13 +145,13 @@
 <input class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-11" type="tel" value="+1 (555) 123-4567">
 </div>
 <div class="flex flex-col gap-2">
-<label class="text-sm font-bold text-slate-700 dark:text-slate-300" style="">Job Title</label>
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300" style="">Cargo</label>
 <input class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-11" type="text" value="Senior Full Stack Engineer">
 </div>
 </div>
 <div class="flex flex-col gap-2">
-<label class="text-sm font-bold text-slate-700 dark:text-slate-300" style="">Professional Bio</label>
-<textarea class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary" rows="4">Focused on building scalable infrastructure e modern web applications. Avid open-source contributor e mentor.</textarea>
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300" style="">Biografia profissional</label>
+<textarea class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary" rows="4">Focado em construir infraestrutura escalável e aplicações web modernas. Contribuidor ativo de código aberto e mentor.</textarea>
 </div>
 </div>
 </div>
@@ -166,7 +166,7 @@
 <!-- Danger Zone Section -->
 <div class="mt-8 bg-red-50/50 dark:bg-red-900/10 rounded-xl border border-red-100 dark:border-red-900/30 p-6 flex flex-wrap items-center justify-between gap-4">
 <div>
-<h4 class="text-red-700 dark:text-red-400 font-bold" style="">Deactivate Conta</h4>
+<h4 class="text-red-700 dark:text-red-400 font-bold" style="">Desativar conta</h4>
 <p class="text-red-600/70 dark:text-red-400/60 text-sm" style="">Ao desativar sua conta, não será possível voltar. Confirme apenas se tiver certeza.</p>
 </div>
 <button class="px-4 py-2 bg-white dark:bg-slate-900 text-red-600 border border-red-200 dark:border-red-900 font-bold rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors" style="">

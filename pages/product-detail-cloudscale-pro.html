@@ -3,16 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="refresh" content="0; url=./produto.html" />
-  <title>DEVHUB | Produto</title>
+  <title>CloudScale Pro | DEVHUB</title>
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
-  <main class="container" style="min-height: 100vh; display: grid; place-items: center; text-align: center;">
-    <section class="card">
-      <h1>Detalhes do Produto</h1>
-      <p class="message info">Abrindo a pagina generica de produto...</p>
-      <a class="btn btn-primary" href="./produto.html">Abrir produto</a>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="./software-marketplace-dashboard.html">DEVHUB</a>
+      <div class="row" style="flex-wrap: wrap; gap: .75rem;">
+        <a class="btn btn-secondary" href="./software-marketplace-dashboard.html">Mercado</a>
+        <a class="btn btn-secondary" href="./wishlist.html">Favoritos</a>
+        <a class="btn btn-primary" href="./checkout-payment.html">Comprar agora</a>
+      </div>
+    </div>
+  </header>
+  <main class="container" style="padding: 2rem 0;">
+    <section class="card" style="padding: 2rem;">
+      <div class="two-col" style="grid-template-columns: 1.4fr 0.8fr; gap: 1.5rem; align-items:start;">
+        <div>
+          <h1>CloudScale Pro</h1>
+          <p>Uma plataforma SaaS para gestão de infraestrutura, automação de deploy e visibilidade de performance em tempo real.</p>
+          <div class="row" style="margin-top: 1rem; gap: .75rem; flex-wrap: wrap;">
+            <span class="small"><strong>Fornecedor:</strong> DevHub Labs</span>
+            <span class="small"><strong>Categoria:</strong> SaaS e Nuvem</span>
+            <span class="small"><strong>Plataforma:</strong> Web</span>
+            <span class="small"><strong>Nota:</strong> 4.9 ★</span>
+          </div>
+          <section style="margin-top: 1.5rem;">
+            <h2 class="section-title">Recursos</h2>
+            <ul style="margin-top: 1rem; padding-left: 1.2rem; color: var(--muted);">
+              <li>Painel centralizado de observabilidade</li>
+              <li>Alertas e automações configuráveis</li>
+              <li>Conectores para serviços AWS, Azure e Google Cloud</li>
+            </ul>
+          </section>
+        </div>
+        <aside class="card" style="background:#f8f9ff; padding: 1.5rem;">
+          <h3 style="margin-top:0;">Assinatura</h3>
+          <p class="small"><strong>Preço:</strong> R$ 299,00 / mês</p>
+          <p class="small"><strong>Plano:</strong> Pro</p>
+          <p class="small"><strong>Suporte:</strong> 24/7</p>
+          <a class="btn btn-primary" href="./checkout-payment.html" style="display:block; margin-top: 1rem;">Iniciar compra</a>
+        </aside>
+      </div>
     </section>
   </main>
 </body>

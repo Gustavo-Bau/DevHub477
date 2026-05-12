@@ -189,7 +189,7 @@
 <section>
 <div class="flex items-center justify-between mb-4">
 <h3 class="text-lg font-bold text-slate-900 dark:text-white">Cobrança History</h3>
-<a download="devhub-invoices-export.csv" href="data:text/csv,invoice_id,date,amount,status%0AINV-9402,2023-09-01,49.00,Paid%0AINV-8812,2023-08-01,49.00,Paid" class="text-primary text-sm font-bold flex items-center gap-1 hover:underline">
+<a download="devhub-invoices-export.csv" href="data:text/csv,invoice_id,date,amount,status%0AINV-9402,2023-09-01,49.00,Pago%0AINV-8812,2023-08-01,49.00,Pago" class="text-primary text-sm font-bold flex items-center gap-1 hover:underline">
 <span>Exportar tudo</span>
 <span class="material-symbols-outlined text-sm">download</span>
 </a>
@@ -215,7 +215,7 @@
 <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-slate-900 dark:text-white">$49.00</td>
 <td class="px-6 py-4 whitespace-nowrap">
 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
-                                                Paid
+                                                Pago
                                             </span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-right">
@@ -232,7 +232,7 @@
 <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-slate-900 dark:text-white">$49.00</td>
 <td class="px-6 py-4 whitespace-nowrap">
 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
-                                                Paid
+                                                Pago
                                             </span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-right">
@@ -249,7 +249,7 @@
 <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-slate-900 dark:text-white">$124.50</td>
 <td class="px-6 py-4 whitespace-nowrap">
 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
-                                                Pending
+                                                Pendente
                                             </span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-right">
@@ -266,7 +266,7 @@
 <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-slate-900 dark:text-white">$49.00</td>
 <td class="px-6 py-4 whitespace-nowrap">
 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-400">
-                                                Overdue
+                                                Vencida
                                             </span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-right">
@@ -304,7 +304,7 @@
     <p class="text-sm text-slate-600 mb-6">Valor: <span id="inv-amount" class="font-semibold text-slate-900 dark:text-white"></span></p>
     <div class="flex gap-3 justify-end">
       <a id="inv-download" download="invoice.txt" href="data:text/plain,Select%20an%20invoice%20to%20download" class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white">Baixar</a>
-      <button onclick="closeFaturaModal()" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold">Close</button>
+      <button onclick="closeFaturaModal()" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold">Fechar</button>
     </div>
   </div>
 </div>

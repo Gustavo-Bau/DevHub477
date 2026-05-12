@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favoritos | DEVHUB</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="./index.html">DEVHUB</a>
+      <nav class="row" style="flex-wrap: wrap; gap: .75rem;">
+        <a class="btn btn-secondary" href="./index.html">Início</a>
+        <a class="btn btn-secondary" href="./software-marketplace-dashboard.html">Mercado</a>
+        <a class="btn btn-secondary" href="./orders.html">Pedidos</a>
+        <a class="btn btn-secondary" href="./seller-profile.html">Vendedores</a>
+        <a class="btn btn-secondary" href="./about.html">Sobre</a>
+        <a class="btn btn-primary" href="./login.html">Entrar</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <div class="card" style="padding: 2rem;">
+      <h1 class="section-title">Favoritos</h1>
+      <p>Salve e acesse rapidamente os produtos que você quer testar, comparar ou comprar depois.</p>
+      <section class="grid products" style="margin-top: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+        <article class="card">
+          <h3>Dashboard Analítico</h3>
+          <p>Visualize métricas em tempo real com um painel fluido e colaborativo.</p>
+          <div class="row" style="margin-top:1rem;">
+            <a class="btn btn-primary" href="./produto.html?id=dashboard-analitico">Ver produto</a>
+            <a class="btn btn-secondary" href="./software-marketplace-dashboard.html">Remover</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Gerenciador de APIs</h3>
+          <p>Controle rotas, autenticação e performance de serviços REST.</p>
+          <div class="row" style="margin-top:1rem;">
+            <a class="btn btn-primary" href="./produto.html?id=gerenciador-apis">Ver produto</a>
+            <a class="btn btn-secondary" href="./software-marketplace-dashboard.html">Remover</a>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+  <footer class="container" style="padding: 2rem 0; text-align: center; color: var(--muted);">
+    <p>© 2026 DEVHUB. <a href="./privacy-policy.html">Privacidade</a> • <a href="./terms.html">Termos</a></p>
+  </footer>
+</body>
+</html>

@@ -9,24 +9,47 @@
 <body>
   <header class="header">
     <div class="container header-inner">
-      <a class="brand" href="./software-marketplace-dashboard.html" style="text-decoration: none; color: inherit;">DEVHUB</a>
-      <div class="row">
+      <a class="brand" href="./software-marketplace-dashboard.html">DEVHUB</a>
+      <div class="row" style="flex-wrap: wrap; gap: .75rem;">
         <a class="btn btn-secondary" href="./software-marketplace-dashboard.html">Continuar comprando</a>
         <a class="btn btn-primary" href="./checkout-payment.html">Ir para pagamento</a>
       </div>
     </div>
   </header>
-
-  <main class="container">
-    <h1 class="section-title">Carrinho</h1>
-
-    <section class="card">
-      <h2>Seu carrinho está vazio</h2>
-      <p>Quando você adicionar produtos, eles aparecerão aqui antes de seguir para o pagamento.</p>
-      <div class="row" style="justify-content: flex-start; margin-top: 1rem;">
-        <a class="btn btn-secondary" href="./software-marketplace-dashboard.html">Ver produtos</a>
+  <main class="container" style="padding: 2rem 0;">
+    <h1 class="section-title">Meu carrinho</h1>
+    <div class="two-col" style="grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+      <section class="card">
+        <div class="row" style="align-items:center; gap: 1rem;">
+          <div>
+            <h2>CloudScale Pro</h2>
+            <p class="small">Assinatura mensal de gestão em nuvem</p>
+          </div>
+          <span>R$ 299,00</span>
+        </div>
+        <p style="color: var(--muted); margin-top: .75rem;">Inclui monitoramento, automação e suporte 24/7.</p>
+      </section>
+      <section class="card" style="padding: 1.5rem; background: #f8f9ff;">
+        <h3 style="margin-top:0;">Resumo do pedido</h3>
+        <div class="row" style="margin: 1rem 0;">
+          <span>Subtotal</span>
+          <strong>R$ 299,00</strong>
+        </div>
+        <div class="row" style="margin-bottom: 1rem;">
+          <span>Taxas</span>
+          <strong>R$ 0,00</strong>
+        </div>
+        <div class="row" style="margin-bottom: 1.5rem; font-size:1.2rem; font-weight:700;">
+          <span>Total</span>
+          <span>R$ 299,00</span>
+        </div>
         <a class="btn btn-primary" href="./checkout-payment.html">Finalizar compra</a>
-      </div>
+      </section>
+    </div>
+    <section class="card" style="margin-top: 1.5rem; padding: 1.5rem;">
+      <h3>Precisa de ajuda?</h3>
+      <p class="small">Dúvidas sobre o produto ou pagamento? Entre em contato com o suporte.</p>
+      <a class="btn btn-secondary" href="./contact.html">Fale conosco</a>
     </section>
   </main>
 </body>
