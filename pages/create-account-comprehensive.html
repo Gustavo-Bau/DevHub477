@@ -70,21 +70,23 @@
 </label>
 </div>
 </div>
-<form class="space-y-5">
-<!-- Dynamic Content: Comum User View (Default) -->
-<div class="space-y-5" id="regular-fields">
+<form class="space-y-5" id="form-signup">
+<!-- Account Type Specific Fields -->
+
+<!-- Regular User Account (Pessoa Comum) -->
+<div class="space-y-5" id="regular-fields" style="display: none;">
 <div class="flex flex-col gap-2">
 <label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Nome completo</label>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">badge</span>
-<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="John Doe" type="text"/>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="João Silva" type="text" name="regular_name"/>
 </div>
 </div>
 <div class="flex flex-col gap-2">
 <label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Endereço de e-mail</label>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">mail</span>
-<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="john@empresa.com" type="email"/>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="joao@email.com" type="email" name="regular_email"/>
 </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -92,25 +94,113 @@
 <label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Senha</label>
 <div class="relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">lock</span>
-<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="••••••••" type="password"/>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="••••••••" type="password" name="regular_password"/>
 </div>
 </div>
 <div class="flex flex-col gap-2">
 <label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Confirmar Senha</label>
 <div class="relative">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">key_visualizer</span>
-<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="••••••••" type="password"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">lock_open</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="••••••••" type="password" name="regular_password_confirm"/>
 </div>
 </div>
 </div>
 </div>
+
+<!-- Company Account (Pessoa Jurídica) -->
+<div class="space-y-5" id="company-fields" style="display: none;">
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Razão Social</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">domain</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="Empresa Ltda." type="text" name="company_name"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">CNPJ</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">badge</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="00.000.000/0000-00" type="text" name="company_cnpj"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Responsável</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">person</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="Nome do responsável" type="text" name="company_responsible"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Endereço de e-mail corporativo</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">mail</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="contato@empresa.com" type="email" name="company_email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Senha</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">lock</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="••••••••" type="password" name="company_password"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Confirmar Senha</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">lock_open</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="••••••••" type="password" name="company_password_confirm"/>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Supplier Account (Fornecedor) -->
+<div class="space-y-5" id="supplier-fields" style="display: none;">
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Nome da Empresa/Marca</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">store</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="Minha Solução Tech" type="text" name="supplier_name"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Descrição do Serviço</label>
+<textarea class="w-full px-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="Descreva brevemente os produtos/serviços que você oferece..." name="supplier_description"></textarea>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">E-mail de contato</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">mail</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="vendor@company.com" type="email" name="supplier_email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Senha</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">lock</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="••••••••" type="password" name="supplier_password"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Confirmar Senha</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">lock_open</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 placeholder:text-slate-400" placeholder="••••••••" type="password" name="supplier_password_confirm"/>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Common Fields for All Types -->
 <div class="flex items-start gap-3 py-2">
 <div class="flex h-5 items-center">
-<input class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary" id="terms" type="checkbox"/>
+<input class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary" id="terms" type="checkbox" name="terms"/>
 </div>
 <div class="text-sm leading-6">
 <label class="font-medium text-slate-700 dark:text-slate-300" for="terms">
-                            Eu concordo com os <a class="text-primary hover:underline" href="./terms.html">Termos de serviço</a> e <a class="text-primary hover:underline" href="./privacy-policy.html">Política de privacidade</a>.
+                            Eu concordo com os <a class="text-primary hover:underline" href="./terms.html" target="_blank">Termos de serviço</a> e <a class="text-primary hover:underline" href="./privacy-policy.html" target="_blank">Política de privacidade</a>.
                         </label>
 </div>
 </div>
@@ -118,8 +208,59 @@
 <span>Criar conta</span>
 <span class="material-symbols-outlined text-lg">check</span>
 </button>
-<a class="w-full inline-flex items-center justify-center py-3 px-4 border border-primary/30 text-primary font-bold rounded-lg hover:bg-primary/5 transition-colors" href="./software-marketplace-dashboard.html">Visitante</a>
+<a class="w-full inline-flex items-center justify-center py-3 px-4 border border-primary/30 text-primary font-bold rounded-lg hover:bg-primary/5 transition-colors" href="./software-marketplace-dashboard.html">Continuar como visitante</a>
 </form>
+
+<script>
+const userTypeInputs = document.querySelectorAll('input[name="user_type"]');
+const regularFields = document.getElementById('regular-fields');
+const companyFields = document.getElementById('company-fields');
+const supplierFields = document.getElementById('supplier-fields');
+
+// Get type from URL parameter if provided
+const urlParams = new URLSearchParams(window.location.search);
+const typeParam = urlParams.get('type') || 'regular';
+
+function updateVisibleFields() {
+  const selectedType = document.querySelector('input[name="user_type"]:checked').value;
+  regularFields.style.display = 'none';
+  companyFields.style.display = 'none';
+  supplierFields.style.display = 'none';
+  
+  if (selectedType === 'regular') {
+    regularFields.style.display = 'block';
+  } else if (selectedType === 'company') {
+    companyFields.style.display = 'block';
+  } else if (selectedType === 'supplier') {
+    supplierFields.style.display = 'block';
+  }
+}
+
+// Set initial state based on URL parameter or default
+document.querySelector(`input[name="user_type"][value="${typeParam}"]`).checked = true;
+updateVisibleFields();
+
+userTypeInputs.forEach(input => {
+  input.addEventListener('change', updateVisibleFields);
+});
+
+// Form submission
+document.getElementById('form-signup').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const selectedType = document.querySelector('input[name="user_type"]:checked').value;
+  const termsCheckbox = document.getElementById('terms');
+  
+  if (!termsCheckbox.checked) {
+    alert('Por favor, aceite os Termos de serviço e Política de privacidade');
+    return;
+  }
+  
+  // Aqui você pode enviar os dados do formulário para um servidor
+  console.log('Formulário enviado para tipo:', selectedType);
+  alert('Conta criada com sucesso! Redirecionando...');
+  window.location.href = './software-marketplace-dashboard.html';
+});
+</script>
 <div class="mt-8 pt-6 border-t border-primary/10 flex flex-col items-center gap-4">
 <p class="text-sm text-slate-500">Ou cadastre-se com</p>
 <div class="flex gap-4 w-full">
