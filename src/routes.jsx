@@ -1,9 +1,34 @@
-import { Navigate } from 'react-router-dom';import BaseLayout from './layouts/BaseLayout';import HomePage from './pages/HomePage';import MarketplacePage from './pages/MarketplacePage';import ProductPage from './pages/ProductPage';import GenericPage from './pages/GenericPage';import CheckoutPage from './pages/CheckoutPage';
-const wrap=(el)=><BaseLayout>{el}</BaseLayout>;
-const generic=(title,path,description)=>wrap(<GenericPage title={title} path={path} description={description}/>);
-export const routes=[
-{path:'/',element:wrap(<HomePage/>)},{path:'/mercado',element:wrap(<MarketplacePage/>)},{path:'/produto/:slug',element:wrap(<ProductPage/>)},{path:'/produto',element:wrap(<ProductPage/>)},{path:'/checkout',element:wrap(<CheckoutPage/>)},
-{path:'/login',element:generic('Login','/login')},{path:'/dashboard',element:generic('Dashboard','/dashboard')},{path:'/perfil',element:generic('Perfil','/perfil')},{path:'/seguranca',element:generic('Segurança','/seguranca')},{path:'/notificacoes',element:generic('Notificações','/notificacoes')},{path:'/pedidos',element:generic('Pedidos','/pedidos')},{path:'/favoritos',element:generic('Favoritos','/favoritos')},{path:'/carrinho',element:generic('Carrinho','/carrinho')},{path:'/confirmacao-pedido',element:generic('Confirmação de pedido','/confirmacao-pedido')},{path:'/faturas',element:generic('Faturas','/faturas')},{path:'/assinaturas',element:generic('Assinaturas','/assinaturas')},{path:'/admin',element:generic('Admin','/admin')},{path:'/sobre',element:generic('Sobre','/sobre')},{path:'/contato',element:generic('Contato','/contato')},{path:'/termos',element:generic('Termos','/termos')},{path:'/privacidade',element:generic('Privacidade','/privacidade')},{path:'/categorias',element:generic('Categorias','/categorias')},
-{path:'/cadastro',element:generic('Cadastro','/cadastro','Escolha o tipo de conta: comum, empresa ou fornecedor.')},{path:'/cadastro/empresa',element:generic('Cadastro Empresa','/cadastro/empresa')},{path:'/cadastro/fornecedor',element:generic('Cadastro Fornecedor','/cadastro/fornecedor')},
-{path:'/404',element:generic('Página não encontrada','/404')},{path:'*',element:<Navigate to='/404' replace/>}
+import { lazy } from 'react';
+import { Navigate } from 'react-router-dom';
+import BaseLayout from './layouts/BaseLayout';
+
+const HomePage = lazy(() => import('./pages/HomePage'));
+const MarketplacePage = lazy(() => import('./pages/MarketplacePage'));
+const ProductPage = lazy(() => import('./pages/ProductPage'));
+const CheckoutPage = lazy(() => import('./pages/CheckoutPage'));
+const CartPage = lazy(() => import('./pages/CartPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const SignupPage = lazy(() => import('./pages/SignupPage'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage'));
+const OrdersPage = lazy(() => import('./pages/OrdersPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+
+const wrap = (el) => <BaseLayout>{el}</BaseLayout>;
+
+export const routes = [
+  { path: '/', element: wrap(<HomePage />) },
+  { path: '/mercado', element: wrap(<MarketplacePage />) },
+  { path: '/produto/:slug', element: wrap(<ProductPage />) },
+  { path: '/checkout', element: wrap(<CheckoutPage />) },
+  { path: '/carrinho', element: wrap(<CartPage />) },
+  { path: '/login', element: wrap(<LoginPage />) },
+  { path: '/cadastro', element: wrap(<SignupPage />) },
+  { path: '/perfil', element: wrap(<ProfilePage />) },
+  { path: '/pedidos', element: wrap(<OrdersPage />) },
+  { path: '/sobre', element: wrap(<AboutPage />) },
+  { path: '/contato', element: wrap(<ContactPage />) },
+  { path: '/404', element: wrap(<NotFoundPage />) },
+  { path: '*', element: <Navigate to='/404' replace /> },
 ];

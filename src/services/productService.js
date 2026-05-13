@@ -1,9 +1,17 @@
-import { products } from '../data/products';
-export async function fetchProducts(){
-  try{const r=await fetch('/api/products',{headers:{Accept:'application/json'}});if(r.ok){return await r.json();}}catch{}
-  return products;
+const json = async (r) => {
+  if (!r.ok) throw new Error('Erro ao buscar dados de produtos.');
+  return r.json();
+};
+
+export async function fetchProducts(params = {}) {
+  const qs = new URLSearchParams(params);
+  const url = `/api/products${qs.toString() ? `?${qs}` : ''}`;
+  const res = await fetch(url, { headers: { Accept: 'application/json' } });
+  return json(res);
 }
-export async function fetchProductByIdOrSlug(idOrSlug){
-  try{const r=await fetch(`/api/products/${encodeURIComponent(idOrSlug)}`,{headers:{Accept:'application/json'}});if(r.ok)return await r.json();}catch{}
-  return products.find(p=>p.slug===idOrSlug||p.id===idOrSlug)||null;
+
+export async function fetchProductBySlug(slug) {
+  if (!slug) throw new Error('Slug inválido.');
+  const res = await fetch(`/api/products/${encodeURIComponent(slug)}`, { headers: { Accept: 'application/json' } });
+  return json(res);
 }
