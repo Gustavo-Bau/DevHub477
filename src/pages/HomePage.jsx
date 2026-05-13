@@ -1,0 +1,2 @@
+import { Link } from 'react-router-dom';
+export default function HomePage(){return <section className='card'><h1>O marketplace profissional para software e SaaS.</h1><p className='muted'>Descubra ferramentas modernas e gerencie compras em um só lugar.</p><div style={{display:'flex',gap:'1rem',flexWrap:'wrap'}}><Link className='btn btn-primary' to='/mercado'>Ver vitrine</Link><Link className='btn btn-secondary' to='/cadastro'>Criar conta</Link></div></section>}

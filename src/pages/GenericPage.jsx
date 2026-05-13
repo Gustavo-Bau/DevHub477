@@ -1,0 +1,1 @@
+export default function GenericPage({title,description}){return <section className='card'><h1>{title}</h1><p className='muted'>{description||'Tela funcional de apresentação pronta para integração futura com API e regras de negócio.'}</p></section>}
