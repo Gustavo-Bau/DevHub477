@@ -1,103 +1,204 @@
-# DEVHUB477
+# DEVHUB
 
-Projeto estático do marketplace DEVHUB, organizado em páginas HTML e estilos CSS.
+Marketplace SaaS em **React + Vite**, com foco em arquitetura pronta para integração com backend REST/MySQL.
 
-## Estrutura
+## Visão geral
 
-- `pages/`: todas as páginas HTML do projeto.
-- `css/`: todos os arquivos CSS usados pelas páginas.
-- `pages/software-marketplace-dashboard.html`: página principal do marketplace.
-- `pages/index.html`: redireciona para a página principal.
-- `pages/produto.html`: página genérica de detalhes do produto.
+O DEVHUB é uma aplicação frontend para descoberta, avaliação e compra de software/SaaS.
 
-## Página principal
+Principais objetivos da base atual:
+- código limpo e modular;
+- navegação SPA com React Router;
+- checkout/carrinho com estado global;
+- SEO técnico por página;
+- estrutura preparada para API real (`/api/*`).
 
-A vitrine principal fica em:
+## Stack
 
-```text
-pages/software-marketplace-dashboard.html
+- **React 18**
+- **Vite 5**
+- **React Router DOM 6**
+- **React Helmet Async** (SEO)
+
+## Estrutura do projeto
+
+```bash
+.
+├── public/
+│   ├── robots.txt
+│   └── sitemap.xml
+├── src/
+│   ├── components/
+│   │   ├── checkout/
+│   │   ├── EmptyState.jsx
+│   │   ├── ErrorState.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Header.jsx
+│   │   ├── LoadingState.jsx
+│   │   ├── MarketplaceFilters.jsx
+│   │   └── ProductCard.jsx
+│   ├── context/
+│   │   └── CartContext.jsx
+│   ├── data/
+│   │   └── products.js
+│   ├── layouts/
+│   │   └── BaseLayout.jsx
+│   ├── pages/
+│   │   ├── HomePage.jsx
+│   │   ├── MarketplacePage.jsx
+│   │   ├── ProductPage.jsx
+│   │   ├── CartPage.jsx
+│   │   ├── CheckoutPage.jsx
+│   │   ├── LoginPage.jsx
+│   │   ├── SignupPage.jsx
+│   │   ├── ProfilePage.jsx
+│   │   ├── OrdersPage.jsx
+│   │   ├── FavoritesPage.jsx
+│   │   ├── CategoriesPage.jsx
+│   │   ├── TermsPage.jsx
+│   │   ├── PrivacyPage.jsx
+│   │   ├── AboutPage.jsx
+│   │   ├── ContactPage.jsx
+│   │   └── NotFoundPage.jsx
+│   ├── seo/
+│   │   └── Seo.jsx
+│   ├── services/
+│   │   ├── productService.js
+│   │   ├── cartService.js
+│   │   └── checkoutService.js
+│   ├── styles/
+│   │   └── global.css
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── routes.jsx
+├── index.html
+├── package.json
+└── vite.config.js
 ```
 
-Ela não possui produtos modelo fixos. A lista é carregada por JavaScript a partir do endpoint:
+## Rotas principais
 
-```text
-/api/products
+- `/` Home
+- `/mercado` Vitrine
+- `/produto/:slug` Detalhe do produto
+- `/carrinho` Carrinho
+- `/checkout` Pagamento
+- `/login` Login
+- `/cadastro` Cadastro
+- `/perfil` Perfil
+- `/pedidos` Pedidos
+- `/favoritos` Favoritos
+- `/categorias` Categorias
+- `/termos` Termos
+- `/privacidade` Privacidade
+- `/sobre` Sobre
+- `/contato` Contato
+- `/404` Não encontrada
+
+## Fluxo de carrinho e checkout
+
+### CartContext (`src/context/CartContext.jsx`)
+Centraliza:
+- itens do carrinho;
+- subtotal, desconto e total;
+- quantidade total;
+- estados de loading/erro;
+- ações `loadCart`, `addToCart`, `removeFromCart`, `applyCoupon`.
+
+### Services
+
+#### `src/services/productService.js`
+- `fetchProducts(params)`
+- `fetchProductBySlug(slug)`
+
+#### `src/services/cartService.js`
+- `fetchCart()`
+- `addCartItem(payload)`
+- `removeCartItem(itemId)`
+- `applyCoupon(code)`
+
+#### `src/services/checkoutService.js`
+- `createCheckout(payload)`
+- `finalizeOrder(payload)`
+
+> Observação: a UI está pronta para backend real. Em ausência de API, telas usam estados de erro/vazio em vez de conteúdo fictício.
+
+## SEO técnico
+
+- Metatags base em `index.html`;
+- metadados por rota com `Seo.jsx` + `react-helmet-async`;
+- `robots.txt` ativo;
+- `sitemap.xml` com rotas principais.
+
+## Padrões de UI/UX adotados
+
+- um `h1` por página principal;
+- feedback claro para loading/erro/empty/sucesso;
+- checkout com validação básica de cartão;
+- design responsivo (desktop e mobile);
+- identidade visual consistente em `src/styles/global.css`.
+
+## Requisitos
+
+- Node.js 18+
+- npm 9+
+
+## Como rodar localmente
+
+```bash
+npm install
+npm run dev
 ```
 
-Se o endpoint ainda não existir ou não retornar produtos, a página mostra o estado vazio informando que está pronta para receber dados do banco.
+A aplicação sobe por padrão em:
+- `http://localhost:5173`
 
-## Formato esperado da API
+## Build de produção
 
-O endpoint pode retornar um array diretamente:
-
-```json
-[
-  {
-    "id": 1,
-    "slug": "meu-produto",
-    "nome": "Meu Produto",
-    "descricao": "Descrição do produto",
-    "fornecedor": "Minha Empresa",
-    "preco": 99.9,
-    "avaliacao": 4.8,
-    "categoria": "SaaS e Nuvem",
-    "plataforma": "Web",
-    "criadoEm": "2026-04-28"
-  }
-]
+```bash
+npm run build
+npm run preview
 ```
 
-Ou dentro de uma chave:
+## Integração esperada de API
 
-```json
-{
-  "produtos": []
-}
-```
+Endpoints esperados hoje pela camada de serviços:
 
-Também são aceitos nomes em inglês, como `name`, `description`, `vendor`, `price`, `rating`, `category`, `platform` e `createdAt`.
+### Produtos
+- `GET /api/products`
+- `GET /api/products/:slug`
 
-## Filtros
+### Carrinho
+- `GET /api/cart`
+- `POST /api/cart/items`
+- `DELETE /api/cart/items/:itemId`
+- `POST /api/cart/coupon`
 
-Na página principal, os filtros funcionam sobre os produtos carregados:
+### Checkout
+- `POST /api/checkout/create`
+- `POST /api/checkout/finalize`
 
-- busca por nome, fornecedor e descrição;
-- categoria;
-- plataforma;
-- faixa máxima de preço;
-- nota mínima;
-- ordenação por mais populares, mais recentes e mais bem avaliados.
+## Checklist rápido de qualidade
 
-Para categoria e plataforma, os valores são normalizados automaticamente. Exemplos aceitos:
+- [x] Rotas críticas com páginas reais
+- [x] Sem dependência de HTML legado
+- [x] Carrinho centralizado em contexto
+- [x] Serviços desacoplados da UI
+- [x] SEO por página
+- [x] Sitemap e robots
+- [x] Estados de loading/erro/empty
 
-- `SaaS e Nuvem` vira `saas-nuvem`;
-- `Ferramentas Dev` vira `ferramentas-dev`;
-- `Segurança` vira `seguranca`;
-- `Análises` vira `analises`;
-- `Web`, `Desktop`, `Mobile` e `CLI` funcionam diretamente.
+## Próximos passos sugeridos
 
-## Detalhes do produto
+1. Adicionar autenticação real (JWT/session);
+2. adicionar testes (unitário + integração);
+3. implementar paginação backend no marketplace;
+4. registrar telemetria de erro (Sentry, por exemplo);
+5. criar CI para lint/build/test automático.
 
-A página:
+---
 
-```text
-pages/produto.html
-```
-
-espera receber um identificador na URL:
-
-```text
-pages/produto.html?id=meu-produto
-```
-
-Ela tenta buscar:
-
-```text
-/api/products/:id
-```
-
-Quando você conectar ao banco, basta expor esse endpoint para preencher os dados do produto.
-
-## Observações
-
-As páginas foram traduzidas para português do Brasil e os links internos foram ajustados para navegação local entre arquivos `.html`.
+Se quiser, na próxima etapa eu também posso entregar:
+- documentação de contrato de API (OpenAPI/Swagger);
+- guia de padrões de componentes;
+- estratégia de versionamento e release.
