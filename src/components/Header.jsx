@@ -31,7 +31,7 @@ export default function Header() {
     return (
         <header className="header app-header">
             <div className="container header-inner">
-                <div className="header-left">
+                <div className="header-start">
                     <Link className="brand" to="/">DEVHUB</Link>
                     <nav className="nav header-nav" aria-label="Menu principal">
                         {navItems.map(([to, label]) => (
@@ -46,7 +46,7 @@ export default function Header() {
                     </nav>
                 </div>
 
-                <div className="header-actions">
+                <div className="header-center">
                     <div className="header-search">
                         <span className="search-icon"><SearchIcon /></span>
                         <input
@@ -56,29 +56,33 @@ export default function Header() {
                             type="search"
                         />
                     </div>
+                </div>
 
-                    <Link className="icon-badge" to="/carrinho" aria-label="Abrir carrinho">
-                        <span className="icon-badge-circle">🛒</span>
-                        {quantity > 0 && <span className="badge-count">{quantity}</span>}
-                    </Link>
-
-                    {user ? (
-                        <div className="user-chip">
-                            <div className="user-avatar">{userInitial}</div>
-                            <div className="user-meta">
-                                <span>{user.nome?.split(' ')[0] || 'Usuário'}</span>
-                                <small className="muted">{user.tipo_conta || 'Conta'}</small>
-                            </div>
-                            <div className="user-actions">
-                                <Link className="btn btn-secondary btn-sm" to="/perfil">Perfil</Link>
-                                <button className="btn btn-secondary btn-sm" onClick={handleLogout} type="button">Sair</button>
-                            </div>
-                        </div>
-                    ) : (
-                        <Link className="btn btn-primary" to="/login">
-                            Entrar
+                <div className="header-end">
+                    <div className="header-actions">
+                        <Link className="icon-badge" to="/carrinho" aria-label="Abrir carrinho">
+                            <span className="icon-badge-circle">🛒</span>
+                            {quantity > 0 && <span className="badge-count">{quantity}</span>}
                         </Link>
-                    )}
+
+                        {user ? (
+                            <div className="user-chip">
+                                <div className="user-avatar">{userInitial}</div>
+                                <div className="user-meta">
+                                    <span>{user.nome?.split(' ')[0] || 'Usuário'}</span>
+                                    <small className="muted">{user.tipo_conta || 'Conta'}</small>
+                                </div>
+                                <div className="user-actions">
+                                    <Link className="btn btn-secondary btn-sm" to="/perfil">Perfil</Link>
+                                    <button className="btn btn-secondary btn-sm" onClick={handleLogout} type="button">Sair</button>
+                                </div>
+                            </div>
+                        ) : (
+                            <Link className="btn btn-primary" to="/login">
+                                Entrar
+                            </Link>
+                        )}
+                    </div>
                 </div>
             </div>
         </header>
