@@ -1,0 +1,1 @@
+import{j as r}from"./index-DdcycNIR.js";function a({message:s="Ocorreu um erro.",retry:e}){return r.jsxs("section",{className:"card",children:[r.jsx("h2",{children:"Não foi possível carregar"}),r.jsx("p",{className:"msg err",children:s}),e]})}export{a as E};

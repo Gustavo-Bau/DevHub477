@@ -1,0 +1,1 @@
+import{j as e}from"./index-DdcycNIR.js";import{S as a}from"./Seo-BhLN-iGt.js";function s(){return e.jsxs("section",{className:"card",children:[e.jsx(a,{title:"Sobre | DEVHUB",description:"Conheça o DEVHUB.",path:"/sobre"}),e.jsx("h1",{children:"Sobre o DEVHUB"}),e.jsx("p",{className:"muted",children:"Marketplace profissional para software e SaaS."})]})}export{s as default};

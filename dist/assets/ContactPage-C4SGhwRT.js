@@ -1,0 +1,1 @@
+import{j as t}from"./index-DdcycNIR.js";import{S as e}from"./Seo-BhLN-iGt.js";function s(){return t.jsxs("section",{className:"card",children:[t.jsx(e,{title:"Contato | DEVHUB",description:"Fale com o time DEVHUB.",path:"/contato"}),t.jsx("h1",{children:"Contato"}),t.jsx("p",{className:"muted",children:"Canal oficial de atendimento e suporte."})]})}export{s as default};
