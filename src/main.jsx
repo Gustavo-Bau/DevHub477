@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
+import { ToastProvider } from './components/ToastProvider';
 import App from './App';
 import './styles/global.css';
 
@@ -12,9 +13,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <HelmetProvider>
             <AuthProvider>
                 <CartProvider>
-                    <BrowserRouter>
-                        <App />
-                    </BrowserRouter>
+                    <ToastProvider>
+                        <BrowserRouter>
+                            <App />
+                        </BrowserRouter>
+                    </ToastProvider>
                 </CartProvider>
             </AuthProvider>
         </HelmetProvider>

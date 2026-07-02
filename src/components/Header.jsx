@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 
@@ -18,45 +18,62 @@ export default function Header() {
         navigate('/login');
     };
 
+    const navItems = [
+        ['/mercado', 'Mercado'],
+        ['/categorias', 'Categorias'],
+        ['/favoritos', 'Favoritos'],
+        ['/pedidos', 'Pedidos'],
+        ['/sobre', 'Sobre'],
+    ];
+
+    const userInitial = user?.nome?.trim()?.[0]?.toUpperCase() || 'U';
+
     return (
         <header className="header app-header">
             <div className="container header-inner">
-                <div className="header-branding">
+                <div className="header-left">
                     <Link className="brand" to="/">DEVHUB</Link>
-                    <div className="header-search">
-                        <span className="search-icon"><SearchIcon /></span>
-                        <input className="input header-search-input" placeholder="Buscar software, SaaS ou ferramenta" aria-label="Buscar no marketplace" />
-                    </div>
+                    <nav className="nav header-nav" aria-label="Menu principal">
+                        {navItems.map(([to, label]) => (
+                            <NavLink
+                                key={to}
+                                to={to}
+                                className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+                            >
+                                {label}
+                            </NavLink>
+                        ))}
+                    </nav>
                 </div>
 
-                <nav className="nav header-nav" aria-label="Menu principal">
-                    {[
-                        ['/mercado', 'Mercado'],
-                        ['/categorias', 'Categorias'],
-                        ['/favoritos', 'Favoritos'],
-                        ['/pedidos', 'Pedidos'],
-                        ['/sobre', 'Sobre'],
-                    ].map(([to, label]) => (
-                        <Link key={to} className="nav-link" to={to}>
-                            {label}
-                        </Link>
-                    ))}
-                </nav>
-
                 <div className="header-actions">
+                    <div className="header-search">
+                        <span className="search-icon"><SearchIcon /></span>
+                        <input
+                            className="input header-search-input"
+                            placeholder="Buscar software, SaaS ou ferramenta"
+                            aria-label="Buscar no marketplace"
+                            type="search"
+                        />
+                    </div>
+
                     <Link className="icon-badge" to="/carrinho" aria-label="Abrir carrinho">
                         <span className="icon-badge-circle">🛒</span>
                         {quantity > 0 && <span className="badge-count">{quantity}</span>}
                     </Link>
+
                     {user ? (
-                        <>
-                            <Link className="btn btn-secondary" to="/perfil">
-                                {user.nome?.split(' ')[0] || 'Perfil'}
-                            </Link>
-                            <button className="btn btn-secondary" onClick={handleLogout} type="button">
-                                Sair
-                            </button>
-                        </>
+                        <div className="user-chip">
+                            <div className="user-avatar">{userInitial}</div>
+                            <div className="user-meta">
+                                <span>{user.nome?.split(' ')[0] || 'Usuário'}</span>
+                                <small className="muted">{user.tipo_conta || 'Conta'}</small>
+                            </div>
+                            <div className="user-actions">
+                                <Link className="btn btn-secondary btn-sm" to="/perfil">Perfil</Link>
+                                <button className="btn btn-secondary btn-sm" onClick={handleLogout} type="button">Sair</button>
+                            </div>
+                        </div>
                     ) : (
                         <Link className="btn btn-primary" to="/login">
                             Entrar

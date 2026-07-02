@@ -62,19 +62,38 @@ export function CartProvider({ children }) {
   const addToCart = async (product, quantity = 1) => {
     setLoading(true);
     setError('');
+    const itemId = product.id || product.slug || `${product.nome}-${product.preco}`;
+    const cartItem = {
+      id: itemId,
+      slug: product.slug,
+      name: product.nome || product.name || 'Produto',
+      image: product.imagem_principal || product.image || 'https://via.placeholder.com/320',
+      price: Number(product.preco || product.price || 0),
+      quantity,
+      category: product.categoria || product.category,
+    };
+
     try {
-      const saved = await addCartItem({ productId: product.id || product.slug, quantity });
+      const saved = await addCartItem({ productId: itemId, quantity });
+      const nextItem = { ...cartItem, ...saved };
       setCartItems((prev) => {
-        const idx = prev.findIndex((item) => (item.id || item.slug) === (saved.id || saved.slug));
-        if (idx === -1) return [...prev, saved];
+        const idx = prev.findIndex((item) => (item.id || item.slug) === itemId);
+        if (idx === -1) return [...prev, nextItem];
         const next = [...prev];
-        next[idx] = saved;
+        next[idx] = nextItem;
         return next;
       });
-      return saved;
+      return nextItem;
     } catch (e) {
-      setError(e.message || 'Não foi possível adicionar o produto ao carrinho.');
-      throw e;
+      setCartItems((prev) => {
+        const idx = prev.findIndex((item) => (item.id || item.slug) === itemId);
+        if (idx === -1) return [...prev, cartItem];
+        const next = [...prev];
+        next[idx] = { ...next[idx], quantity: Number(next[idx].quantity || 0) + quantity };
+        return next;
+      });
+      setError(e.message || 'Não foi possível sincronizar com o servidor. O item foi adicionado localmente.');
+      return cartItem;
     } finally {
       setLoading(false);
     }
@@ -87,8 +106,8 @@ export function CartProvider({ children }) {
       await removeCartItem(itemId);
       setCartItems((prev) => prev.filter((item) => (item.id || item.slug) !== itemId));
     } catch (e) {
-      setError(e.message || 'Não foi possível remover o item do carrinho.');
-      throw e;
+      setCartItems((prev) => prev.filter((item) => (item.id || item.slug) !== itemId));
+      setError(e.message || 'Não foi possível remover o item do carrinho do servidor. Item removido localmente.');
     } finally {
       setLoading(false);
     }
@@ -102,12 +121,14 @@ export function CartProvider({ children }) {
       setCartItems((prev) => prev.map((item) => (item.id || item.slug) === (updated.id || updated.slug) ? updated : item));
       return updated;
     } catch (e) {
-      setError(e.message || 'Não foi possível atualizar a quantidade do item.');
-      throw e;
+      setCartItems((prev) => prev.map((item) => (item.id || item.slug) === itemId ? { ...item, quantity } : item));
+      setError(e.message || 'Não foi possível atualizar a quantidade no servidor. Atualizado localmente.');
+      return { ...prev.find((item) => (item.id || item.slug) === itemId), quantity };
     } finally {
       setLoading(false);
     }
   };
+
 
   const subtotal = useMemo(
     () => items.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.quantity || 1), 0),
